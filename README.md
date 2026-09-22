@@ -1,1 +1,4 @@
-# Projet s301-site_web
+# MathAI
+
+## Références
+[MVC Framework](https://github.com/moinal/LP2020)
