@@ -8,9 +8,9 @@ function start_page($title): void {
         <title><?php echo $title; ?></title>
     </head>
     <body>
-    <?php Vue::montrer('standard/header'); ?>
+    <?php Vue::montrer('include/header'); ?>
     <?php echo $A_vue['body'] ?>
-    <?php Vue::montrer('standard/footer'); ?>
+    <?php Vue::montrer('include/footer'); ?>
     </body>
 </html>
 <?php
