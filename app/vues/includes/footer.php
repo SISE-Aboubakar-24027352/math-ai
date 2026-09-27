@@ -1,3 +1,5 @@
-<footer>Pied</footer>
-</body>
+        <footer>
+            Pied
+        </footer>
+    </body>
 </html>

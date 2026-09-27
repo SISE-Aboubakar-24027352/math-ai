@@ -7,5 +7,6 @@ if (isset($_GET['action']) && $_GET['action'] === 'logout') {
     exit;
 }
 
-include __DIR__ . '/../app/vues/includes/header.php';
+require __DIR__ . '/../app/vues/includes/header.php';
+generateHeader('Accueil',$utilisateur);
 include __DIR__ . '/../app/vues/includes/footer.php';
