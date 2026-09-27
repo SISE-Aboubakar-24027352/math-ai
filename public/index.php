@@ -6,23 +6,6 @@ if (isset($_GET['action']) && $_GET['action'] === 'logout') {
     header('Location: index.php');
     exit;
 }
-?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>MathsAI - Accueil</title>
-</head>
-<body>
-    <nav>
-        <a href="index.php">MathsAI</a>
-        <?php if ($utilisateur === null): ?>
-            | <a href="/login.php">Connexion</a>
-            | <a href="/register.php">Inscription</a>
-        <?php else: ?>
-            | <a href="index.php?action=logout">Déconnexion</a>
-        <?php endif; ?>
-    </nav>
-</body>
-</html>
+include __DIR__ . '/../app/vues/includes/header.php';
+include __DIR__ . '/../app/vues/includes/footer.php';
