@@ -28,11 +28,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
     $confirmation = $_POST['confirmation'] ?? '';
-    $erreurs = chercheErreur($pdo, $email, $password, $confirmation);
-    $erreurs = [];
     $succes = false;
+    $erreurs = chercheErreur($pdo, $email, $password, $confirmation);
     if (empty($erreurs)) {
-        $succes = ajouteId($pdo, $email, $password);
+        ajouteId($pdo, $email, $password);
+        $succes = true;
     }
 }
 
