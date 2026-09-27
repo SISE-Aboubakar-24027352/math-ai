@@ -27,5 +27,4 @@ function ajouteId (PDO $pdo, String $email, String $password) {
     $stmt = $pdo->prepare('INSERT INTO users (email,password) VALUES (:email,:password)');
     $stmt->execute(['email' => $email, 'password' => password_hash($password, PASSWORD_DEFAULT)]);
 }
-$dsn = 'mysql:host=postgresql-saemathai.alwaysdata.net;dbname=saemathai_bdd';
 
