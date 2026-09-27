@@ -18,8 +18,8 @@ if (isset($_GET['action']) && $_GET['action'] === 'logout') {
     <nav>
         <a href="index.php">MathsAI</a>
         <?php if ($utilisateur === null): ?>
-            | <a href="/database/login.php">Connexion</a>
-            | <a href="/database/register.php">Inscription</a>
+            | <a href="/login.php">Connexion</a>
+            | <a href="/register.php">Inscription</a>
         <?php else: ?>
             | <a href="index.php?action=logout">Déconnexion</a>
         <?php endif; ?>
