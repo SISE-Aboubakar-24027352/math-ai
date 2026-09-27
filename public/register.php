@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $erreurs = [];
     $succes = false;
     if (empty($erreurs)) {
-        //$succes = ajouteId($pdo, $email, $password);
+        $succes = ajouteId($pdo, $email, $password);
     }
 }
 
