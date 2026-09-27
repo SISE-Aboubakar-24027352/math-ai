@@ -22,7 +22,7 @@ function chercheErreur(PDO $pdo, String $email, String $password,String $confirm
 
 session_start();
 include_once "base_de_donnees.php";
-$dsn = ''mysql:host=postgresql-saemathai.alwaysdata.net;dbname=saemathai_bdd'';
+$dsn = 'mysql:host=postgresql-saemathai.alwaysdata.net;dbname=saemathai_bdd';
 $pdo = base_de_donnees($dsn);
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = trim($_POST['email'] ?? '');
