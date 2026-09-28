@@ -2,13 +2,12 @@
 session_start();
 $utilisateur = $_SESSION['username'] ?? null;
 if (isset($utilisateur)) {
-    generateHeader('Connexion',$utilisateur);
+    //generateHeader('Connexion',$utilisateur);
     exit;
 }
 
 require __DIR__ . '/../app/vues/includes/header.php';
-
-
+generateHeader('Connexion',$utilisateur);
 
 include_once "base_de_donnees.php";
 $dsn = 'mysql:host=postgresql-saemathai.alwaysdata.net;dbname=saemathai_bdd';
@@ -37,12 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Login</title>
 </head>
 <body>
-    <nav>
-        <a href="index.php">Accueil</a>
-        <a href="login.php">Connexion</a>
-        <a href="register.php">Inscription</a>
-    </nav>
-
     <h1>Connexion</h1>
     <?php
     if ($erreur !== null) {
