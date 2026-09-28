@@ -1,5 +1,5 @@
 <?php
-$utilisateur = $_SESSION['utilisateur'] ?? null;
+$user = $_SESSION['username'] ?? null;
 
 if (isset($_GET['action']) && $_GET['action'] === 'logout') {
     session_destroy();
@@ -8,5 +8,5 @@ if (isset($_GET['action']) && $_GET['action'] === 'logout') {
 }
 
 require __DIR__ . '/../app/vues/includes/header.php';
-generateHeader('Accueil',$utilisateur);
+generateHeader('Accueil',$user);
 include __DIR__ . '/../app/vues/includes/footer.php';

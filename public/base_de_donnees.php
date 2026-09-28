@@ -17,14 +17,3 @@ function base_de_donnees(String $dsn) : ?PDO {
     return $pdo;
 }
 
-function verifieEmail (PDO $pdo, String $email) {
-    $stmt = $pdo->prepare('SELECT id FROM users WHERE email = :email');
-    $stmt->execute(['email' => $email]);
-    return $stmt;
-}
-
-function ajouteId (PDO $pdo, String $email, String $password) {
-    $stmt = $pdo->prepare('INSERT INTO users (email,password) VALUES (:email,:password)');
-    $stmt->execute(['email' => $email, 'password' => password_hash($password, PASSWORD_DEFAULT)]);
-}
-
