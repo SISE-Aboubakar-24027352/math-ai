@@ -1,10 +1,13 @@
 <?php
 session_start();
-
-if (isset($_SESSION['username'])) {
-    header('Location: index.php');
+$utilisateur = $_SESSION['username'] ?? null;
+if (isset($utilisateur)) {
+    //generateHeader('Connexion',$utilisateur);
     exit;
 }
+
+require __DIR__ . '/../app/vues/includes/header.php';
+generateHeader('Connexion',$utilisateur);
 
 include_once "base_de_donnees.php";
 $dsn = 'mysql:host=postgresql-saemathai.alwaysdata.net;dbname=saemathai_bdd';
@@ -25,20 +28,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     else $erreur = 'E-mail ou mot de passe incorrect';
 }
- ?>
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
+    <title>Login</title>
 </head>
 <body>
-    <nav>
-        <a href="index.php">Accueil</a>
-        <a href="login.php">Connexion</a>
-        <a href="register.php">Inscription</a>
-    </nav>
-
     <h1>Connexion</h1>
     <?php
     if ($erreur !== null) {
@@ -68,6 +65,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </ul>
 </body>
 </html>
-
 
 
