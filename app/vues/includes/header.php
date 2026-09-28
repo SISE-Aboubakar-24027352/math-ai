@@ -1,7 +1,7 @@
 <?php
 function generateHeader($title,$utilisateur = null){
     $pageTitle = 'MathsAI - ' . $title;
-    $links = ($utilisateur === null) ? '| <a href="/login.php">Connexion</a> | <a href="/register.php">Inscription</a>'
+    $links = ($utilisateur === null) ? '| <a href="/public/login.php">Connexion</a> | <a href="/public/register.php">Inscription</a>'
         : '| <a href="index.php?action=logout">Déconnexion</a>';
 
     echo "<!DOCTYPE html>

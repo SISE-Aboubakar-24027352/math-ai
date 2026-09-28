@@ -21,6 +21,7 @@ function chercheErreur(PDO $pdo, String $email, String $password,String $confirm
 }
 
 session_start();
+require __DIR__ . '/../app/vues/includes/header.php';
 include_once "base_de_donnees.php";
 $dsn = 'mysql:host=postgresql-saemathai.alwaysdata.net;dbname=saemathai_bdd';
 $pdo = base_de_donnees($dsn);
@@ -35,7 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $succes = true;
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
