@@ -2,18 +2,16 @@
 
 final class Controleur
 {
-    private $_urlDecortique;
+    private array $_urlDecortique = [];
 
-    private $_urlParametres;
+    private array $_urlParametres = [];
 
-    private $_donneeForm;
+    private array $_donneeForm = [];
 
-    public function __construct($S_url, $A_postParams)
+    public function __construct(string $S_url,array $A_postParams)
     {
 
-        if ('/' == substr($S_url, -1, 1)) {
-            $S_url = substr($S_url, 0, strlen($S_url) - 1);
-        }
+        $S_url = trim($S_url, '/');
 
         $A_urlDecortique = explode('/', $S_url);
 
@@ -57,6 +55,8 @@ final class Controleur
             throw new ControleurException("L'action " . $this->_urlDecortique['action'] .
                     " du contrôleur " . $this->_urlDecortique['controleur'] . " a rencontré une erreur.");
         }
+
+        return $B_called;
     }
 }
 ?>
