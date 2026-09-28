@@ -2,12 +2,18 @@
 
 final class Controleur
 {
+    /** @var array<string, mixed> */
     private array $_urlDecortique = [];
 
+    /** @var array<string> */
     private array $_urlParametres = [];
 
+    /** @var array<string, mixed> */
     private array $_donneeForm = [];
 
+    /**
+     * @param array<string, mixed> $A_postParams
+     */
     public function __construct(string $S_url,array $A_postParams)
     {
 
@@ -37,7 +43,7 @@ final class Controleur
 
     }
 
-    public function executer()
+    public function executer(): mixed
     {
         if (!class_exists($this->_urlDecortique['controleur'])) {
             throw new ControleurException($this->_urlDecortique['controleur'] . " n'est pas un controleur valide.");
