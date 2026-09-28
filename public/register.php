@@ -1,5 +1,5 @@
 <?php
-function chercheErreur(PDO $pdo, String $email, String $password,String $confirmation): array
+function findError(PDO $pdo, String $email, String $password,String $confirmation): array
 {
     $erreurs = [];
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -12,7 +12,7 @@ function chercheErreur(PDO $pdo, String $email, String $password,String $confirm
         $erreurs[] = 'Les deux mots de passe ne correspondent pas.';
     }
     if (empty($erreurs)) {
-        if (verifieEmail($pdo,$email)->fetch()) {
+        if (checkEmail($pdo,$email)->fetch()) {
             $erreurs[] = 'Cet e-mail est déjà inscrit.';
         }
     }
@@ -20,70 +20,73 @@ function chercheErreur(PDO $pdo, String $email, String $password,String $confirm
 
 }
 
+function checkEmail (PDO $pdo, String $email) {
+    $stmt = $pdo->prepare('SELECT id FROM users WHERE email = :email');
+    $stmt->execute(['email' => $email]);
+    return $stmt;
+}
+
+function addId (PDO $pdo, String $email, String $password) {
+    $stmt = $pdo->prepare('INSERT INTO users (email,password) VALUES (:email,:password)');
+    $stmt->execute(['email' => $email, 'password' => password_hash($password, PASSWORD_DEFAULT)]);
+}
+
 session_start();
 require __DIR__ . '/../app/vues/includes/header.php';
 generateHeader('Connexion',null);
-include_once "base_de_donnees.php";
-$dsn = 'mysql:host=postgresql-saemathai.alwaysdata.net;dbname=saemathai_bdd';
-$pdo = base_de_donnees($dsn);
+require __DIR__ . '/../app/vues/includes/db.php';
+/** @var PDO $pdo */
+//Pour récupérer la variable dans le try
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
     $confirmation = $_POST['confirmation'] ?? '';
-    $succes = false;
-    $erreurs = chercheErreur($pdo, $email, $password, $confirmation);
+    $success = false;
+    $erreurs = findError($pdo, $email, $password, $confirmation);
     if (empty($erreurs)) {
-        ajouteId($pdo, $email, $password);
-        $succes = true;
+        addId($pdo, $email, $password);
+        $success = true;
     }
 }
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Register</title>
-</head>
-<body>
-    <h1>Inscription</h1>
     <?php
-    if ($succes) {
+    if ($success) {
         echo '<p> Votre compte a bien été créé. <a href="login.php">Connectez-vous</a></p>';
     }
     else {
         if (!empty($erreurs)) {
             for ($i = 0; $i < sizeof($erreurs); ++$i) {
-                echo '<li>', $erreurs[$i], '</li>';
+                echo '<p>', $erreurs[$i], '</p>';
             }
         }
     }
     ?>
-    <ul>
-        <form action="register.php" method="post">
             <ul>
-                <li>
-                    <p>
-                        <label id = "label" for = "email">E-mail</label>
-                        <input type="email" name="email" required>
-                    </p>
-                </li>
-                <li>
-                    <p>
-                        <label id = "label" for = "password">Mot de passe</label>
-                        <input type="password" name="password" required>
-                    </p>
-                </li>
-                <li>
-                    <p>
-                        <label id = "label" for = "confirmation">Confirmation du mot de passe</label>
-                        <input type="password" name="confirmation" required>
-                    </p>
-                </li>
-                <li>
-                    <button type="submit">S'inscrire</button>
-                </li>
-            </ul>
-        </form>
-    </ul>
-</body>
+            <form action="register.php" method="post">
+                <ul>
+                    <li>
+                        <p>
+                            <label id = "label" for = "email">E-mail</label>
+                            <input type="email" name="email" required>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <label id = "label" for = "password">Mot de passe</label>
+                            <input type="password" name="password" required>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <label id = "label" for = "confirmation">Confirmation du mot de passe</label>
+                            <input type="password" name="confirmation" required>
+                        </p>
+                    </li>
+                    <li>
+                        <button type="submit">S'inscrire</button>
+                    </li>
+                </ul>
+            </form>
+        </ul>
+    </body>
 </html>
