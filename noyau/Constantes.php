@@ -15,31 +15,31 @@ final class Constantes
 
     const REPERTOIRE_CONFIG = '/noyau/config/';
 
-    public static function repertoireRacine() {
+    public static function repertoireRacine(): string|false {
         return realpath(__DIR__ . '/../');
     }
 
-    public static function repertoireNoyau() {
+    public static function repertoireNoyau(): string {
         return self::repertoireRacine() . self::REPERTOIRE_NOYAU;
     }
 
-    public static function repertoireExceptions() {
+    public static function repertoireExceptions(): string {
         return self::repertoireRacine() . self::REPERTOIRE_EXCEPTIONS;
     }
 
-    public static function repertoireVues() {
+    public static function repertoireVues(): string {
         return self::repertoireRacine() . self::REPERTOIRE_VUES;
     }
 
-    public static function repertoireModele() {
+    public static function repertoireModele(): string {
         return self::repertoireRacine() . self::REPERTOIRE_MODELE;
     }
 
-    public static function repertoireControleurs() {
+    public static function repertoireControleurs(): string {
         return self::repertoireRacine() . self::REPERTOIRE_CONTROLEURS;
     }
 
-    public static function repertoireConfig() {
+    public static function repertoireConfig(): string {
         return self::repertoireRacine() . self::REPERTOIRE_CONFIG;
     }
 
