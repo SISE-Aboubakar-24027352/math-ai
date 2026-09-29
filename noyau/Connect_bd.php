@@ -10,6 +10,6 @@ if (!is_array($conf)) {
 }
 
 $conf = $conf['base_donnee'];
-$dsn = sprintf('%s:host=%s;port=5432;dbname=%s', $conf['driver'], $conf['host'], $conf['dbname']);
+$dsn = $conf['driver'] . ':dbname=' . $conf['dbname'] . ';host=' . $conf['host'];
 $connection = new PDO($dsn, $conf['name'], $conf['mdp']);
 ?>
