@@ -7,5 +7,6 @@
     <body>
         <?php echo Vue::show('includes/header'); ?>
         <?php echo $A_vue['body'] ?>
+        <?php echo Vue::show('includes/footer'); ?>
     </body>
 </html>
