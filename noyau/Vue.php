@@ -1,5 +1,5 @@
 <?php 
-
+require __DIR__ . '/Constantes.php';
 final class Vue
 {
     public static function ouvrirTampon(): void
@@ -16,10 +16,10 @@ final class Vue
     /**
      * @param array<string, mixed> $A_tableau
      */
-    public static function montrer(string $S_localisation,array $A_tableau = []):string|false
+    public static function show(string $S_localisation,array $A_tableau = []):string|false
     {
         $S_fichier = Constantes::repertoireVues() . $S_localisation . '.php';
-
+        
         $A_vue = $A_tableau;
         ob_start();
         include $S_fichier;

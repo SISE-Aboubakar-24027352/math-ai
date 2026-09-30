@@ -1,18 +1,11 @@
-<?php
-function start_page($title): void {
-    ?>
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
     <head>
-    <meta charset="utf-8" content="text/html" http-equiv="Content-Type">
-        <title><?php echo $title; ?></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title><?php echo $A_vue['title'] ?></title>
     </head>
     <body>
-    <?php Vue::montrer('include/header'); ?>
-    <?php echo $A_vue['body'] ?>
-    <?php Vue::montrer('include/footer'); ?>
+        <?php echo Vue::show('includes/header'); ?>
+        <?php echo $A_vue['body'] ?>
     </body>
 </html>
-<?php
-}
-start_page("Accueil");

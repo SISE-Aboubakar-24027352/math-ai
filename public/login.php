@@ -2,13 +2,10 @@
 session_start();
 $user = $_SESSION['username'] ?? null;
 if (isset($user)) {
-    //generateHeader('Connexion',$user);
     exit;
 }
 
-require __DIR__ . '/../app/vues/includes/header.php';
-generateHeader('Connexion',null);
-
+require __DIR__ . '/../noyau/Vue.php';
 require __DIR__ . '/../app/vues/includes/db.php';
 /** @var PDO $pdo */
 //Pour récupérer la variable dans le try
@@ -29,34 +26,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     else $erreur = 'E-mail ou mot de passe incorrect';
 }
+
+$A_vue = [
+    'title' => 'Connexion - MathsAI',
+    'body' => '
+        <h1>Connexion</h1>
+    <?php if ($erreur !== null): ?>
+        <p style="color: red;"><?= htmlspecialchars($erreur) ?></p>
+    <?php endif; ?>
+
+    <form action="/public/login.php" method="post">
+        <ul>
+            <li>
+                <p>
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" value="' . htmlspecialchars($email) . '" required>
+                </p>
+            </li>
+            <li>
+                <p>
+                    <label for="password">Mot de passe</label>
+                    <input type="password" name="password" required>
+                </p>
+            </li>
+            <li>
+                <button type="submit">Se connecter</button>
+            </li>
+        </ul>
+    '
+];
+echo Vue::show('body', $A_vue);
+
 ?>
-    <h1>Connexion</h1>
-    <?php
-    if ($erreur !== null) {
-        echo '<p>' ,$erreur, '</p>';
-    }
-    ?>
-            <ul>
-                <form action="login.php" method="post">
-                    <ul>
-                        <li>
-                            <p>
-                                <label id = "label" for = "email">E-mail</label>
-                                <input type="email" name="email" required>
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                <label id = "label" for = "password">Mot de passe</label>
-                                <input type="password" name="password" required>
-                            </p>
-                        </li>
-                        <li>
-                            <button type="submit">Se connecter</button>
-                        </li>
-                    </ul>
-                </form>
-            </ul>
+    
     </body>
 </html>
 
