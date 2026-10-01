@@ -35,7 +35,7 @@ function addId (PDO $pdo, String $email, String $password) {
 
 session_start();
 
-require __DIR__ . '/../app/vues/includes/db.php';
+require __DIR__ . '/../noyau/Connect_bd.php';
 /** @var PDO $pdo */
 //Pour récupérer la variable dans le try
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
