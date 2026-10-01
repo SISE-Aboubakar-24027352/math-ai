@@ -14,6 +14,8 @@ final class Constantes
     const REPERTOIRE_CONTROLEURS = '/app/controleurs/';
 
     const REPERTOIRE_CONFIG = '/noyau/config/';
+    
+    const REPERTOIR_INCLUDES = '/noyau/includes/';
 
     public static function repertoireRacine(): string|false {
         return realpath(__DIR__ . '/../');
@@ -43,5 +45,8 @@ final class Constantes
         return self::repertoireRacine() . self::REPERTOIRE_CONFIG;
     }
 
+    public static function repertoirIncludes() : String{
+        return self::repertoireRacine() .self::REPERTOIR_INCLUDES;
+    }
 }
 ?>
