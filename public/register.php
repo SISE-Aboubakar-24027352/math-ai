@@ -1,5 +1,7 @@
 <?php
-function findError(PDO $pdo, String $email, String $password,String $confirmation): array
+
+
+ function findError(PDO $pdo, String $email, String $password,String $confirmation): array
 {
     $erreurs = [];
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -59,15 +61,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
     }
-    ?>
-
-<?php
 
 require __DIR__ . '/../noyau/Vue.php';
 $A_vue = [
-    'title' => 'Connexion - MathsAI',
+    'title' => 'Inscription - MathsAI',
     'body'=>'
-            <ul>
+            <h1>Inscription</h1>
             <form action="register.php" method="post">
                 <ul>
                     <li>
@@ -93,9 +92,7 @@ $A_vue = [
                     </li>
                 </ul>
             </form>
-        </ul>
-    </body>
-</html>'
+'
 ];
 echo Vue::show('body',$A_vue);
 ?>
