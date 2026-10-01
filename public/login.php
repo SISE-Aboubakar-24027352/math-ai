@@ -4,7 +4,6 @@ $user = $_SESSION['username'] ?? null;
 if (isset($user)) {
     exit;
 }
-
 require __DIR__ . '/../noyau/Vue.php';
 require __DIR__ . '/../app/vues/includes/db.php';
 /** @var PDO $pdo */
@@ -53,13 +52,11 @@ $A_vue = [
                 <button type="submit">Se connecter</button>
             </li>
         </ul>
+    </form>
     '
 ];
 echo Vue::show('body', $A_vue);
 
 ?>
-    
-    </body>
-</html>
 
 
