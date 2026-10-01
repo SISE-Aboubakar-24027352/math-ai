@@ -32,8 +32,7 @@ function addId (PDO $pdo, String $email, String $password) {
 }
 
 session_start();
-require __DIR__ . '/../app/vues/includes/header.php';
-generateHeader('Connexion',null);
+
 require __DIR__ . '/../app/vues/includes/db.php';
 /** @var PDO $pdo */
 //Pour récupérer la variable dans le try
@@ -61,6 +60,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
     ?>
+
+<?php
+
+require __DIR__ . '/../noyau/Vue.php';
+$A_vue = [
+    'title' => 'Connexion - MathsAI',
+    'body'=>'
             <ul>
             <form action="register.php" method="post">
                 <ul>
@@ -83,10 +89,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </p>
                     </li>
                     <li>
-                        <button type="submit">S'inscrire</button>
+                        <button type="submit">S\'inscrire</button>
                     </li>
                 </ul>
             </form>
         </ul>
     </body>
-</html>
+</html>'
+];
+echo Vue::show('body',$A_vue);
+?>
