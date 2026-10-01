@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title><?= htmlspecialchars($title ?? 'MathIA') ?></title>
-    //<link rel="stylesheet" href="chemin vers le css a mettre">
+    <link rel="stylesheet" href= "/css/global.css">
 </head>
 
 <body>
