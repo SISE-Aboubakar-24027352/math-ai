@@ -9,7 +9,7 @@ final class UserRepository {
         $stmt = $this->pdo->prepare('SELECT id,email,password FROM users WHERE email = :email');
         $stmt->execute(['email' => $email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-        if (!user) return null;
+        if (!$user) return null;
         else return new User($user['id'], $user['email'], $user['password']);
     }
 
@@ -20,16 +20,18 @@ final class UserRepository {
     }
 
     public function createUser(string $email, string $password): User {
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $this->pdo->prepare('INSERT INTO users (email, password) VALUES (:email, :password)');
-        $stmt->execute(['email' => $email, 'password' => password_hash($password, PASSWORD_DEFAULT)]);
+        $stmt->execute(['email' => $email, 'password' => $hashed_password]);
         $id = $this->pdo->lastInsertId();
-        return new User ($id, $email, password_hash($password, PASSWORD_DEFAULT));
+        return new User ($id, $email, $hashed_password);
     }
 
     public function updateUser(string $email, string $password): User {
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $this->pdo->prepare('UPDATE users SET password = :password WHERE id = :id');
-        $stmt->execute(['password' => password_hash($password, PASSWORD_DEFAULT)]);
+        $stmt->execute(['password' => $hashed_password]);
         $id = $this->pdo->lastInsertId();
-        return new User ($id, $email, password_hash($password, PASSWORD_DEFAULT));
+        return new User ($id, $email, $hashed_password);
     }
 }
