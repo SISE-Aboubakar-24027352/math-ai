@@ -39,6 +39,6 @@ final class RegisterController {
                 exit;
             }
         }
-        echo Vue::show('register', array( 'errors' => $errors,'success' => $success, 'formData' => $postParams ));
+        echo Vue::show('register/RegisterForm', array( 'errors' => $errors,'success' => $success, 'formData' => $postParams ));
     }
 }

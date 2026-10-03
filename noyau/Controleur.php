@@ -16,7 +16,6 @@ final class Controleur
      */
     public function __construct(string $S_url,array $A_postParams)
     {
-
         $S_url = trim($S_url, '/');
 
         $A_urlDecortique = explode('/', $S_url);
