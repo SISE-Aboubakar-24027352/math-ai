@@ -1,13 +1,13 @@
 <?php 
-require __DIR__ . '/Constantes.php';
+require_once __DIR__ . '/Constantes.php';
 final class Vue
 {
-    public static function ouvrirTampon(): void
+    public static function openBuffer(): void
     {
         ob_start();
     }
 
-    public static function recupererContenuTampon():string|false
+    public static function getBufferContent():string|false
     {
         return ob_get_clean();
         // ob_get_clean() equivalent a ob_get_contents() + ob_end_clean()
