@@ -20,7 +20,7 @@
 </header>
 
 <main>
-    <?= $content ?>
+    <?php echo $A_vue['body'] ?>
 </main>
 
 <footer class="footer">

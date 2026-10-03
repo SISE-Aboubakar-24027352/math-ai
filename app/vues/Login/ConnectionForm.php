@@ -1,12 +1,14 @@
-<?php 
+<?php
+
+    require __DIR__ . "/../../../noyau/Constantes.php";
     $error = $A_vue['Erreur'] ?? null;
-    $email = trim($_POST['email'] ?? '');
+    $email = trim($A_vue['email'] ?? '');
 
     echo '<h1>Connexion</h1>';
     if($error !== null){
         echo '<p style="color: red;"><?='. htmlspecialchars($erreur).' ?></p>';
     }
-    echo '<form action="/public/login.php" method="post">';
+    echo '<form action="'. Constantes::repertoireRacine().'/public/index.php' .'" method="post">';
     echo   '<label for="email">E-mail</label>';
     echo   '<input type="email" name="email" value="' . htmlspecialchars($email) . '" required>';
     echo   '<label for="password">Mot de passe</label>';
