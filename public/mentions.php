@@ -45,5 +45,5 @@ $A_vue = [
     
     <p>  </p>',
 ];
-echo Vue::show('body', $A_vue);
+echo Vue::show('layout', $A_vue);
 

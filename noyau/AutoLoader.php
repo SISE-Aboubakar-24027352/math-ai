@@ -1,6 +1,6 @@
 <?php
 
-require 'Noyau/Constantes.php';
+require __DIR__ . '/Constantes.php';
 
 final class AutoLoader
 {
@@ -47,8 +47,8 @@ final class AutoLoader
     }
 }
 
-spl_autoload_register('ChargementAuto::chargerClassesNoyau');
-spl_autoload_register('ChargementAuto::chargerClassesException');
-spl_autoload_register('ChargementAuto::chargerClassesModele');
-spl_autoload_register('ChargementAuto::chargerClassesVue');
-spl_autoload_register('ChargementAuto::chargerClassesControleur');
+spl_autoload_register('AutoLoader::chargerClassesNoyau');
+spl_autoload_register('AutoLoader::chargerClassesException');
+spl_autoload_register('AutoLoader::chargerClassesModele');
+spl_autoload_register('AutoLoader::chargerClassesVue');
+spl_autoload_register('AutoLoader::chargerClassesControleur');
