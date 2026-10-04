@@ -1,0 +1,14 @@
+{
+    "require-dev": {
+        "phpunit/phpunit": "^13.3",
+        "phpstan/phpstan": "^2.2"
+    },
+    "scripts": {
+        "test": "phpunit",
+        "phpstan": "phpstan analyse",
+        "check": [
+            "@phpstan",
+            "@test"
+        ]
+    }
+}
