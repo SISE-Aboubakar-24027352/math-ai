@@ -29,6 +29,12 @@ final class UserRepository {
     }
 
     public function updateUser(string $email, string $password): User {
+        $user = $this->findByEmail($email);
+
+        if ($user === null) {
+            throw new InvalidArgumentException('Aucun utilisateur trouvé pour cet email.');
+        }
+
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $this->pdo->prepare('UPDATE users SET password = :password, reset_token = NULL, reset_token_expiry = NULL WHERE id = :id');
         $stmt->execute(['password' => $hashed_password]);
