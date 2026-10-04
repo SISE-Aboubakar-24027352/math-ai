@@ -1,6 +1,6 @@
 <?php
 final class RegisterController {
-    public function register(Array $parameters, Array $postParams)
+    public function registerAction(Array $parameters, Array $postParams)
     {
         $errors = [];
         $success = false;
@@ -30,6 +30,6 @@ final class RegisterController {
                 exit;
             }
         }
-        echo View::show('register', array( 'errors' => $errors,'success' => $success, 'formData' => $postParams ));
+        echo View::show('register/registerView', array( 'errors' => $errors,'success' => $success, 'formData' => $postParams ));
     }
 }

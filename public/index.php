@@ -1,7 +1,7 @@
 <?php
     require __DIR__ . '/../Core/AutoLoader.php';
 
-    $S_urlToParse = isset($_GET['url']) ? $_GET['url'] : "default";
+    $S_urlToParse = isset($_GET['url']) ? $_GET['url'] : 'home';
     $A_postParams = $_POST;
 
     View::openBuffer(); // on ouvre le tampon d'affichage, les contrôleurs qui appellent des vues les mettront dedans
@@ -20,4 +20,4 @@
 
 
     $contenuPourAffichage = View::getBufferContent();
-    View::show('layout', array('body' => $contenuPourAffichage));
+    echo View::show('layout', array('body' => $contenuPourAffichage));
