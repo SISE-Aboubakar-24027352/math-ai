@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= htmlspecialchars($A_view['title'] ?? 'MathIA') ?></title>
-    <link rel="stylesheet" href="ref/css/style.css">
+    <link rel="stylesheet" href="/res/css/style.css">
 </head>
 
 <body>
