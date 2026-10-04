@@ -43,11 +43,11 @@ final class UserRepository {
     }
 
     public function setResetToken($email, $token, $expiry): bool {
-        $stmt = this->$pdo->prepare('UPDATE users SET reset_token = :$token, reset_token_expiry = :expiry WHERE id = :id');
+        $stmt = $this->$pdo->prepare('UPDATE users SET reset_token = :$token, reset_token_expiry = :expiry WHERE id = :id');
         $stmt->execute(['token' => $token, 'expiry' => $expiry]);
     }
 
-    public function findByToken($reset_token): User {
+    public function findByToken($reset_token): ?User {
         $stmt = $this->pdo->prepare('SELECT * FROM users WHERE reset_token = :token');
         $stmt->execute(['token' => $reset_token]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
