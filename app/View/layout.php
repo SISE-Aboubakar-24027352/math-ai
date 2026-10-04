@@ -20,7 +20,7 @@
 </header>
 
 <main>
-    <?= $A_vue['body'] ?>
+    <?= $A_view['body'] ?>
 </main>
 
 <footer class="footer">
