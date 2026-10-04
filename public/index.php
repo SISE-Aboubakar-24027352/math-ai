@@ -2,7 +2,7 @@
     require __DIR__ . '/../Core/AutoLoader.php';
 
     $S_urlToParse = isset($_GET['url']) ? $_GET['url'] : "default";
-    $A_postParams = isset($_POST) ? $_POST : null;
+    $A_postParams = $_POST;
 
     View::openBuffer(); // on ouvre le tampon d'affichage, les contrôleurs qui appellent des vues les mettront dedans
 
