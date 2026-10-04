@@ -1,15 +1,15 @@
 <?php
 
-final class Controleur
+final class Controller
 {
     /** @var array<string, mixed> */
     private array $_urlDecortique = [];
 
     /** @var array<string> */
-    private array $_urlParametres = [];
+    private array $_urlParameters = [];
 
     /** @var array<string, mixed> */
-    private array $_donneeForm = [];
+    private array $_formData = [];
 
     /**
      * @param array<string, mixed> $A_postParams

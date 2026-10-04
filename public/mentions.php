@@ -6,7 +6,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'logout') {
     exit;
 }
 
-require __DIR__ . '/../noyau/Vue.php';
+require __DIR__ . '/../Core/View.php';
 $A_vue = [
     'title' => 'Mentions légales - MathsAI',
     'body' => '<h1>Maths AI</h1>
@@ -45,5 +45,5 @@ $A_vue = [
     
     <p>  </p>',
 ];
-echo Vue::show('layout', $A_vue);
+echo View::show('layout', $A_vue);
 

@@ -1,6 +1,6 @@
 <?php 
-require_once __DIR__ . '/Constantes.php';
-final class Vue
+require_once __DIR__ . '/Constants.php';
+final class View
 {
     public static function openBuffer(): void
     {
@@ -14,15 +14,15 @@ final class Vue
     }
 
     /**
-     * @param array<string, mixed> $A_tableau
+     * @param array<string, mixed> $A_array
      */
-    public static function show(string $S_localisation,array $A_tableau = []):string|false
+    public static function show(string $S_location,array $A_array = []):string|false
     {
-        $S_fichier = Constantes::repertoireVues() . $S_localisation . '.php';
+        $S_file = Constants::viewRepository() . $S_location . '.php';
         
-        $A_vue = $A_tableau;
+        $A_vue = $A_array;
         ob_start();
-        include $S_fichier;
+        include $S_file;
         return ob_get_clean();
     }
 }
