@@ -20,7 +20,7 @@ final class View
     {
         $S_file = Constants::viewRepository() . $S_location . '.php';
         
-        $A_vue = $A_array;
+        $A_view = $A_array;
         ob_start();
         include $S_file;
         return ob_get_clean();

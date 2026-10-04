@@ -1,5 +1,6 @@
 <?php
 
+use Couchbase\User;
 use PDO;
 
 final class UserRepository {
@@ -28,10 +29,29 @@ final class UserRepository {
     }
 
     public function updateUser(string $email, string $password): User {
+        $user = $this->findByEmail($email);
+
+        if ($user === null) {
+            throw new InvalidArgumentException('Aucun utilisateur trouvé pour cet email.');
+        }
+
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $stmt = $this->pdo->prepare('UPDATE users SET password = :password WHERE id = :id');
+        $stmt = $this->pdo->prepare('UPDATE users SET password = :password, reset_token = NULL, reset_token_expiry = NULL WHERE id = :id');
         $stmt->execute(['password' => $hashed_password]);
         $id = $this->pdo->lastInsertId();
         return new User ($id, $email, $hashed_password);
+    }
+
+    public function setResetToken($email, $token, $expiry): bool {
+        $stmt = this->$pdo->prepare('UPDATE users SET reset_token = :$token, reset_token_expiry = :expiry WHERE id = :id');
+        $stmt->execute(['token' => $token, 'expiry' => $expiry]);
+    }
+
+    public function findByToken($reset_token): User {
+        $stmt = $this->pdo->prepare('SELECT * FROM users WHERE reset_token = :token');
+        $stmt->execute(['token' => $reset_token]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        if (!$user) return null;
+        else return new User($user['id'], $user['email'], $user['password']);
     }
 }
