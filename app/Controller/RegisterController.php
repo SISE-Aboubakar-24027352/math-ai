@@ -11,17 +11,8 @@ final class RegisterController {
             $password = $postParams['password'] ?? '';
             $confirmation = $postParams['confirmation'] ?? '';
             //$s_name = trim($A_postParams['name'] ?? '');
-            /*
-        if (!$name) {
-            $errors[] = 'Nom manquant.';
-
-        }
-        */
-
             $repository = new UserRepository($pdo);
-            $userErrors = new UserValidate($email,$password,$confirmation);
-
-            $errors = [];
+            $userValidate = new UserValidate($email,$password,$confirmation);
             $errors[] = $userErrors->checkEmailValidity();
             $errors[] = $userErrors->checkPasswordlength();
             $errors[] = $userErrors->passwordConfirmation();
