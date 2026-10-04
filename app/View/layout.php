@@ -17,7 +17,7 @@
             | <a href="index.php?action=logout">Déconnexion</a>
         <?php } ?>
     </nav>
-</header>$
+</header>
 
 <main>
     <?php echo $A_view['body'] ?>

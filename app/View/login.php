@@ -6,7 +6,7 @@
 
     echo '<h1>Connexion</h1>';
     if($error !== null){
-        echo '<p style="color: red;"><?='. htmlspecialchars($erreur).' ?></p>';
+        echo '<p style="color: red;"><?='. htmlspecialchars($error).' ?></p>';
     }
     echo '<form action="'. Constants::rootRepository().'/public/index.php' .'" method="post">';
     echo   '<label for="email">E-mail</label>';
