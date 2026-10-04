@@ -19,7 +19,7 @@ final class RegisterController {
         */
 
             $repository = new UserRepository($pdo);
-            $userErrors = new UserErrors($email,$password,$confirmation);
+            $userErrors = new UserValidate($email,$password,$confirmation);
 
             $errors = [];
             $errors[] = $userErrors->checkEmailValidity();
@@ -39,6 +39,6 @@ final class RegisterController {
                 exit;
             }
         }
-        echo Vue::show('register/RegisterForm', array( 'errors' => $errors,'success' => $success, 'formData' => $postParams ));
+        echo View::show('register', array( 'errors' => $errors,'success' => $success, 'formData' => $postParams ));
     }
 }
