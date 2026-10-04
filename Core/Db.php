@@ -18,7 +18,7 @@ try {
         id INT NOT NULL AUTO_INCREMENT,
         email VARCHAR(100) NOT NULL UNIQUE,
         password VARCHAR(250) NOT NULL,
-        PRIMARY KEY(id)
+        PRIMARY KEY(id),reset_token VARCHAR(255), reset_token_expiry DATETIME
     )');
 }catch (PDOException $e){
     die ("Erreur :". $e->getMessage());
