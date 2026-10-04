@@ -1,9 +1,9 @@
 <?php
 require __DIR__ . "/../../Core/Constants.php";
 /*
-$error = $A_vue['error'] ?? null;
+$error = $A_view['error'] ?? null;
 $email=trim(A_postParams['email'] ?? '');
-$password = $A_vue['password'] ?? '';
+$password = $A_view['password'] ?? '';
 */
 ?>
 <h1>Inscription</h1>

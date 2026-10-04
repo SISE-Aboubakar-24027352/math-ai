@@ -2,7 +2,7 @@
 
 require __DIR__ . "/../../Core/Constants.php";
 /*
-$error = $A_vue['Erreur'] ?? null;
+$error = $A_view['Erreur'] ?? null;
 $email=trim(A_vue['email'] ?? '');
 */
 ?>
