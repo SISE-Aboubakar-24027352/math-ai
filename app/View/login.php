@@ -8,7 +8,7 @@
     if($error !== null){
         echo '<p style="color: red;"><?='. htmlspecialchars($erreur).' ?></p>';
     }
-    echo '<form action="'. Constantes::repertoireRacine().'/public/index.php' .'" method="post">';
+    echo '<form action="'. Constants::rootRepository().'/public/index.php' .'" method="post">';
     echo   '<label for="email">E-mail</label>';
     echo   '<input type="email" name="email" value="' . htmlspecialchars($email) . '" required>';
     echo   '<label for="password">Mot de passe</label>';

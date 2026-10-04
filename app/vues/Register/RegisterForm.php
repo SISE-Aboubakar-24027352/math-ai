@@ -1,5 +1,5 @@
 <?php 
-    require __DIR__ . "/../../../noyau/Constantes.php";
+    require __DIR__ . "/../../../Core/Constants.php";
     $error = $A_vue['error'] ?? null;
     $email = trim($A_postParams['email'] ?? '');
     $password = $A_vue['password'] ?? '';
@@ -8,7 +8,7 @@
     if($error !== null){
         echo '<p style="color: red;">' . htmlspecialchars($error) . '</p>';
     }
-    echo '<form action="'. Constantes::repertoireRacine().'/public/index.php' .'" method="post">';
+    echo '<form action="'. Constants::rootRepository().'/public/index.php' .'" method="post">';
     echo    '<label id = "label" for = "email">E-mail</label>';
     echo    '<input type="email" name="email" required>';
     echo    '<label id = "label" for = "password" >Mot de passe</label>';
