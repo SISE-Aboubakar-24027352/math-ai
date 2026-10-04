@@ -20,7 +20,7 @@
 </header>
 
 <main>
-    <?php echo $A_view['body'] ?>
+     <?= $content ?? '' ?>
 </main>
 
 <footer class="footer">
