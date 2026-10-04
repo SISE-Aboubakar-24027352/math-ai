@@ -1,7 +1,7 @@
 <?php
 final class LoginController
 {
-    public function LoginController(array $parameters, array $postParams)
+    public function LoginAction(array $parameters, array $postParams)
     {
         $errors = [];
         if (!empty($postParams)) {

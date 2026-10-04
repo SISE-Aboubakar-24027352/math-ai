@@ -21,13 +21,13 @@ final class Controller
         $A_urlSegments = explode('/', $S_url);
 
         if (empty($A_urlSegments[0])) {
-            $A_urlSegments[0] = 'ControllerDefault';
+            $A_urlSegments[0] = 'HomeController';
         } else {
-            $A_urlSegments[0] = 'Controller' . ucfirst($A_urlSegments[0]);
+            $A_urlSegments[0] = ucfirst($A_urlSegments[0]) . 'Controller';
         }
 
         if (empty($A_urlSegments[1])) {
-            $A_urlSegments[1] = 'defaultAction';
+            $A_urlSegments[1] = 'homeAction';
         } else {
             $A_urlSegments[1] = $A_urlSegments[1] . 'Action';
         }

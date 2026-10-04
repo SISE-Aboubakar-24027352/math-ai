@@ -1,10 +1,9 @@
 <?php
-
-require __DIR__ . "/../../Core/Constants.php";
+require_once __DIR__ . "/../../../Core/Constants.php";
 
 echo '<h1>Connexion</h1>';
 if($error !== null){
-    echo '<p style="color: red;"><?= htmlspecialchars($error) ?></p>';
+    echo '<p style="color: red;">'. htmlspecialchars($error) .'</p>';
 }
 echo '<ul>';
 echo    '<form action="'. Constants::rootRepository() . '/public/index.php' . '" method="post">';
