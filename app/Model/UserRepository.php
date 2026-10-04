@@ -1,7 +1,5 @@
 <?php
 
-use PDO;
-
 final class UserRepository {
     public function __construct(private readonly \PDO $pdo) {}
 
@@ -28,10 +26,19 @@ final class UserRepository {
     }
 
     public function updateUser(string $email, string $password): User {
+        $user = $this->findByEmail($email);
+
+        if ($user === null) {
+            throw new InvalidArgumentException('Aucun utilisateur trouvé pour cet email.');
+        }
+
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $this->pdo->prepare('UPDATE users SET password = :password WHERE id = :id');
-        $stmt->execute(['password' => $hashed_password]);
-        $id = $this->pdo->lastInsertId();
-        return new User ($id, $email, $hashed_password);
+        $stmt->execute([
+            'password' => $hashed_password,
+            'id' => $user->id,
+        ]);
+
+        return new User($user->id, $user->email, $hashed_password);
     }
 }
