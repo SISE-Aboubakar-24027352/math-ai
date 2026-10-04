@@ -1,37 +1,30 @@
 <?php
-require_once __DIR__ . "/../../Core/Constants.php";
-/*
-$error = $A_view['error'] ?? null;
-$email=trim(A_postParams['email'] ?? '');
-$password = $A_view['password'] ?? '';
-*/
-?>
-<h1>Inscription</h1>
-<?php if($error !== null){?>
-    <p style="color: red;"><?= htmlspecialchars($error) ?></p>';
-<?php
+require_once __DIR__ . "/../../../Core/Constants.php";
+
+echo '<h1>Inscription</h1>';
+if($error !== null){
+    echo '<p style="color: red;">'. htmlspecialchars($error) .'</p>';
 }
-?>
-<ul>
-    <form action="<?php echo Constants::rootRepository() . '/public/index.php'; ?>" method="post">
-        <li>
-            <p>
-                <label id = "label" for = "email">E-mail</label>
-                <input type="email" name="email" required>
-            </p>
-        </li>
-        <li>
-            <p>
-                <label id = "label" for = "password" >Mot de passe</label>
-                <input type="password" name="password" value="<?= htmlspecialchars($password) ?>" required>
-            </p>
-        </li>
-        <li>
-            <p>
-                <label id = "label" for = "confirmation">Confirmation du mot de passe</label>
-                <input type="password" name="confirmation" value="" required>
-            </p>
-        </li>
-        <button type="submit">S'inscrire</button>
-    </form>
-</ul>
+echo '<ul>';
+echo    '<form action="' . Constants::rootRepository() . '/public/index.php' .'" method="post">';
+echo        '<li>';
+echo            '<p>';
+echo                '<label id = "label" for = "email">E-mail</label>';
+echo                '<input type="email" name="email" required>';
+echo            '</p>';
+echo        '</li>';
+echo        '<li>';
+echo            '<p>';
+echo                '<label id = "label" for = "password" >Mot de passe</label>';
+echo                '<input type="password" name="password" value="" required>';
+echo            '</p>';
+echo        '</li>';
+echo        '<li>';
+echo            '<p>';
+echo                '<label id = "label" for = "confirmation">Confirmation du mot de passe</label>';
+echo                '<input type="password" name="confirmation" value="" required>';
+echo            '</p>';
+echo        '</li>';
+echo        '<button type="submit">S\'inscrire</button>';
+echo    '</form>';
+echo '</ul>';
