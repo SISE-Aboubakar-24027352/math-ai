@@ -10,15 +10,14 @@ if (!is_array($conf)) {
 }
 
 try {
-    $conf = $conf['base_donnee'];
+    $conf = $conf['database'];
     $dsn = $conf['driver'] . ':dbname=' . $conf['dbname'] . ';host=' . $conf['host'];
-    $connection = new PDO($dsn, $conf['name'], $conf['mdp']);
-    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $connection->exec('CREATE TABLE IF NOT EXISTS users (
+    $pdo = new PDO($dsn, $conf['name'], $conf['password']);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->exec('CREATE TABLE IF NOT EXISTS users (
         id INT NOT NULL AUTO_INCREMENT,
-        nom VARCHAR(50) NOT NULL,
-        mail VARCHAR(100) NOT NULL UNIQUE,
-        mdp VARCHAR(250) NOT NULL,
+        email VARCHAR(100) NOT NULL UNIQUE,
+        password VARCHAR(250) NOT NULL,
         PRIMARY KEY(id)
     )');
 }catch (PDOException $e){
