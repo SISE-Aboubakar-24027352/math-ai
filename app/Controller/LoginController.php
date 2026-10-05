@@ -18,6 +18,6 @@ final class LoginController
                 $errors[] = 'Email ou mot de passe incorrect.';
             }
         }
-        echo View::show('login', array('errors' => $errors, 'formData' => $postParams));
+        echo View::show('login/loginView', array('errors' => $errors, 'formData' => $postParams));
     }
 }

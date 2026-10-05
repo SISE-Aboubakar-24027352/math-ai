@@ -2,8 +2,9 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="/res/image/logoMathAi.ico">
     <title><?= htmlspecialchars($title ?? 'MathIA') ?></title>
-    <link rel="stylesheet" href= "/css/style.css">
+    <link rel="stylesheet" href= "/res/css/style.css">
 </head>
 
 <body>
@@ -36,4 +37,4 @@
     </div>
 </footer>
 </body>
-</html
+</html>
