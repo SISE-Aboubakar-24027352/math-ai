@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . "/../../../Core/Constants.php";
 
-echo '<h1>Inscription</h1>';
+echo '<h1>Mot de passe oublié</h1>';
 if($error !== null){
     echo '<p style="color: red;">'. htmlspecialchars($error) .'</p>';
 }
