@@ -15,40 +15,40 @@ final class Constants
 
     const CONFIG_REPOSITORY         = '/Core/config/';
     
-    const INCLUDE_REPOSITORY        = '/Core/includes/';
 
     // renvoie la chemin du dossier racine du projet
     public static function rootRepository(): string|false {
         return realpath(__DIR__ . '/../');
     }
 
-    // renvoie la chemin du dossier racine du projet
-    public static function CoreRepository(): string {
+    // renvoie la chemin du dossier 'Core'
+    public static function coreRepository(): string {
         return self::rootRepository() . self::CORE_REPOSITORY;
     }
 
-    public static function ExceptionRepository(): string {
+    // renvoie la chemin du dossier 'exceptions'
+    public static function exceptionRepository(): string {
         return self::rootRepository() . self::EXCEPTION_REPOSITORY;
     }
 
-    public static function ViewRepository(): string {
+    // renvoie la chemin du dossier contenant les vues
+    public static function viewRepository(): string {
         return self::rootRepository() . self::VIEW_REPOSITORY;
     }
 
-    public static function ModelRepository(): string {
+    // renvoie la chemin du dossier contenant les modèles
+    public static function modelRepository(): string {
         return self::rootRepository() . self::MODEL_REPOSITORY;
     }
 
-    public static function ControllerRepository(): string {
+    // renvoie la chemin du dossier contenant les contrôleurs
+    public static function controllerRepository(): string {
         return self::rootRepository() . self::CONTROLLER_REPOSITORY;
     }
 
-    public static function ConfigRepository(): string {
+    // renvoie la chemin du dossier contenant le php.ini
+    public static function configRepository(): string {
         return self::rootRepository() . self::CONFIG_REPOSITORY;
-    }
-
-    public static function IncludeRepository() : String{
-        return self::rootRepository() .self::INCLUDE_REPOSITORY;
     }
 }
 ?>
