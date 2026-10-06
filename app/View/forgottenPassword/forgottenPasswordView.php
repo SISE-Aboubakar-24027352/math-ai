@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . "/../../../Core/Constants.php";
+$error = $A_view['errors'];
 echo '<h1>Mot de passe oublié</h1>';
 if(!empty($error)){
     echo '<p style="color: red;">'. htmlspecialchars($error[0]) .'</p>';
