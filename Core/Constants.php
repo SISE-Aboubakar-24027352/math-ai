@@ -15,38 +15,33 @@ final class Constants
 
     const CONFIG_REPOSITORY = '/Core/config/';
     
-    const INCLUDE_REPOSITORY = '/Core/includes/';
 
     public static function rootRepository(): string|false {
         return realpath(__DIR__ . '/../');
     }
 
-    public static function CoreRepository(): string {
+    public static function coreRepository(): string {
         return self::rootRepository() . self::CORE_REPOSITORY;
     }
 
-    public static function ExceptionRepository(): string {
+    public static function exceptionRepository(): string {
         return self::rootRepository() . self::EXCEPTION_REPOSITORY;
     }
 
-    public static function ViewRepository(): string {
+    public static function viewRepository(): string {
         return self::rootRepository() . self::VIEW_REPOSITORY;
     }
 
-    public static function ModelRepository(): string {
+    public static function modelRepository(): string {
         return self::rootRepository() . self::MODEL_REPOSITORY;
     }
 
-    public static function ControllerRepository(): string {
+    public static function controllerRepository(): string {
         return self::rootRepository() . self::CONTROLLER_REPOSITORY;
     }
 
-    public static function ConfigRepository(): string {
+    public static function configRepository(): string {
         return self::rootRepository() . self::CONFIG_REPOSITORY;
-    }
-
-    public static function IncludeRepository() : String{
-        return self::rootRepository() .self::INCLUDE_REPOSITORY;
     }
 }
 ?>
