@@ -4,7 +4,6 @@ final class LoginController
 {
     public function loginAction(array $parameters, array $postParams)
     {
-        session_start();
         $errors = [];
 
         if (!empty($postParams)) {
@@ -30,5 +29,11 @@ final class LoginController
             }
         }
         echo View::show('loginView', array('errors' => $errors, 'formData' => $postParams));
+    }
+    public function logoutAction(array $parameters, array $postParams)
+    {
+        session_destroy();
+        header('Location: /index.php?url=home/home');
+        exit;
     }
 }
