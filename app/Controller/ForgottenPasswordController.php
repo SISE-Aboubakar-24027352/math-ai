@@ -1,7 +1,7 @@
 <?php
 
-final class ForgottenPasswordController {
-    public function ForgottenPasswordController(array $parameters, array $postParams)
+final class ForgottenpasswordController {
+    public function ForgottenpasswordAction(array $parameters, array $postParams)
     {
         global $pdo;
 
@@ -40,7 +40,7 @@ final class ForgottenPasswordController {
             }
         }
 
-        echo View::show('forgottenPassword', [
+        echo View::show('forgottenPassword/forgottenPasswordView', [
             'errors' => $errors,
             'success' => $success,
             'formData' => $postParams,

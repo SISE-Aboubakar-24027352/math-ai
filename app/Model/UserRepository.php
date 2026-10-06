@@ -1,17 +1,20 @@
 <?php
 
-use Couchbase\User;
+require __DIR__ .'/User.php';
 use PDO;
 
 final class UserRepository {
-    public function __construct(private readonly \PDO $pdo) {}
+    public function __construct($pdo = null) {
+        $this->pdo = $pdo ?? Db::getPdo();
+    }
+
 
     public function findByEmail(string $email): ?User{
         $stmt = $this->pdo->prepare('SELECT id,email,password FROM users WHERE email = :email');
         $stmt->execute(['email' => $email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-        if (!$user) return null;
-        else return new User($user['id'], $user['email'], $user['password']);
+        if (!$user){return null;}
+        else{return new User($user['id'], $user['email'], $user['password']);}
     }
 
     public function emailExists(string $email): bool {
@@ -43,7 +46,7 @@ final class UserRepository {
     }
 
     public function setResetToken($email, $token, $expiry): bool {
-        $stmt = $this->$pdo->prepare('UPDATE users SET reset_token = :$token, reset_token_expiry = :expiry WHERE id = :id');
+        $stmt = $this->pdo->prepare('UPDATE users SET reset_token = :$token, reset_token_expiry = :expiry WHERE id = :id');
         $stmt->execute(['token' => $token, 'expiry' => $expiry]);
     }
 
