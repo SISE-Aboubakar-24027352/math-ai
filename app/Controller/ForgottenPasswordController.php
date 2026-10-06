@@ -26,7 +26,7 @@ final class ForgottenPasswordController
                 else $message = 'Une erreur est survenue lors de l\'envoi de l\'email.';
             }
         }
-
+        echo View::show('mdpOublie', array('message' => $message, 'formData' => $postParams));
     }
 /*
     public function forgotForm(array $parameters, array $postParams): void
