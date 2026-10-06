@@ -11,9 +11,9 @@
 <header>
     <nav>
         <?php $user = $_SESSION['username'] ?? null; if ($user === null) { ?>
-            <a href="/index.php">MathsAI</a>
-            | <a href="/login.php">Connexion</a>
-            | <a href="/register.php">Inscription</a>
+            <a href="/">MathsAI</a>
+            | <a href="/login">Connexion</a>
+            | <a href="/register">Inscription</a>
         <?php } else { ?>
             | <a href="index.php?action=logout">Déconnexion</a>
         <?php } ?>
@@ -25,16 +25,12 @@
 </main>
 
 <footer class="footer">
-    <div class="div-footer">
-        <h3>
-            <ul>
-                <li> <a href="/">Accueil</a></li>
-                <li> <a href="/about.php"> A propos</a></li>
-                <li> <a href="/contact.php"> Nous contacter</a> </li>
-                <li> <a href="/mentions.php"> Mentions légales </a></li>                    
-            </ul>
-        </h3>
-    </div>
+    <ul>
+        <li> <a href="/">Accueil</a></li>
+        <li> <a href="/sitemap"> Plan du site</a></li>
+        <li> <a href="/contact"> Nous contacter</a> </li>
+        <li> <a href="/mentions"> Mentions légales </a></li>                    
+    </ul>
 </footer>
 </body>
 </html>

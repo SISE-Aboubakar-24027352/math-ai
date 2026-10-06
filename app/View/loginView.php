@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "/../../../Core/Constants.php";
+require_once __DIR__ . "/../../Core/Constants.php";
 
 echo '<h1>Connexion</h1>';
 if($error !== null){
