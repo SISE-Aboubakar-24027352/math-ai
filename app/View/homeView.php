@@ -1,7 +1,6 @@
 <?php
-require_once __DIR__ . "/../../../Core/Constants.php";
+require_once __DIR__ . "/../../Core/Constants.php";
 $isLogged = isset($_SESSION['username']);
-?>
 echo'<section class ="homepage">';
 echo'    <h1>Home Page</h1>';       
 echo'    <div class="homepage-liens">';
