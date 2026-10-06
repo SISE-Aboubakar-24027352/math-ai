@@ -1,6 +1,6 @@
 <?php
 
-use Couchbase\User;
+use User;
 use PDO;
 
 final class UserRepository {
@@ -30,21 +30,19 @@ final class UserRepository {
 
     public function updateUser(string $email, string $password): User {
         $user = $this->findByEmail($email);
-
         if ($user === null) {
             throw new InvalidArgumentException('Aucun utilisateur trouvé pour cet email.');
         }
-
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $stmt = $this->pdo->prepare('UPDATE users SET password = :password, reset_token = NULL, reset_token_expiry = NULL WHERE id = :id');
-        $stmt->execute(['password' => $hashed_password]);
-        $id = $this->pdo->lastInsertId();
+        $stmt = $this->pdo->prepare('UPDATE users SET password = :password, reset_token = NULL, reset_token_expiry = NULL WHERE email = :email');
+        $stmt->execute(['password' => $hashed_password,'email' => $email]);
+        $id = $user->getId(id);
         return new User ($id, $email, $hashed_password);
     }
 
-    public function setResetToken($email, $token, $expiry): bool {
-        $stmt = $this->$pdo->prepare('UPDATE users SET reset_token = :$token, reset_token_expiry = :expiry WHERE id = :id');
-        $stmt->execute(['token' => $token, 'expiry' => $expiry]);
+    public function setResetToken($email, $token, $expiry) {
+        $stmt = $this->pdo->prepare('UPDATE users SET reset_token = :token, reset_token_expiry = :expiry WHERE email = :email');
+        return $stmt->execute(['token' => $token, 'expiry' => $expiry,'email' => $email]);
     }
 
     public function findByToken($reset_token): ?User {

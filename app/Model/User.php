@@ -10,4 +10,8 @@ public function __construct(
     public function verifyPassword(string $password): bool {
     return password_verify($password, $this->passwordHash);
     }
+
+    public function getId(): int {
+    return $this->id;
+    }
 }
