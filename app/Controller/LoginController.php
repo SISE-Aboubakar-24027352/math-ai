@@ -1,7 +1,7 @@
 <?php
 final class LoginController
 {
-    public function LoginAction(array $parameters, array $postParams)
+    public function loginAction(array $parameters, array $postParams)
     {
         $errors = [];
         if (!empty($postParams)) {
@@ -18,6 +18,6 @@ final class LoginController
                 $errors[] = 'Email ou mot de passe incorrect.';
             }
         }
-        echo View::show('login', array('errors' => $errors, 'formData' => $postParams));
+        echo View::show('login/loginView', array('errors' => $errors, 'formData' => $postParams));
     }
 }
