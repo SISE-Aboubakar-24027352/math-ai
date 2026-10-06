@@ -1,13 +1,13 @@
 <?php
 require_once __DIR__ . "/../../Core/Constants.php";
-
+$error = $A_view['errors'];
 echo '<h1>Inscription</h1>';
-if($error !== null){
-    echo '<p style="color: red;">'. htmlspecialchars($error) .'</p>';
+if(!empty($error)){
+    echo '<p style="color: red;">'. htmlspecialchars($error[0]) .'</p>';
 }
 
 echo '<span>';
-echo    '<form action="' . '/index.php' .'" method="post">';
+echo    '<form action="/index.php?url=register/register" method="post">';
 echo      '<ul>';
 echo            '<li>';
 echo               '<li>';

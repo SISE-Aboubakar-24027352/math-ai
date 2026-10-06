@@ -1,21 +1,60 @@
 <?php
-function chargerEnv(string $chemin): void
+
+require_once __DIR__ . '/Constants.php';
+
+/**
+ * Charge les variables d'environnement depuis le fichier .env.
+ * Inspiré de https://github.com/hadeli/MVC-Explication/
+ */
+function chargerEnv(string $chemin)
 {
     if (!is_file($chemin)) {
-        throw new RuntimeException("Fichier de configuration introuvable : $chemin\n"
-            . "Copiez .env.example vers .env puis adaptez les valeurs.");
+        throw new RuntimeException(
+            "Fichier de configuration introuvable : $chemin\n" .
+            "Copiez .env.example vers .env puis adaptez les valeurs."
+        );
     }
-    foreach (file($chemin, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $ligne) {
-        // ignorer commentaires, découper sur le premier "=", retirer les guillemets,
-        // ne rien écraser si la variable existe déjà (getenv() ou $_ENV)...
-        $_ENV[$cle] = $valeur;
-        putenv("$cle=$valeur");
+
+    $lignes = file($chemin, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    if ($lignes === false) {
+        throw new RuntimeException("Impossible de lire le fichier : $chemin");
+    }
+
+    foreach ($lignes as $ligne) {
+
+        // récupère la ligne à partir du premier "=". Si "=" n'est pas présent dans la ligne alors la ligne est ignorée
+        $position = strpos($ligne, '=');
+        if ($position === false) {
+            continue; 
+        }
+
+        // extraction de la clé et de la valeur
+        $cle = trim(substr($ligne, 0, $position));
+        $valeur = trim(substr($ligne, $position + 1));
+
+        // si la clé existe alors ne pas écraser les variables déjà définies
+        if (!array_key_exists($cle, $_ENV)) {
+            $_ENV[$cle] = $valeur;
+            putenv("$cle=$valeur");
+        }
     }
 }
 
-function env(string $cle, ?string $defaut = null): ?string
+/**
+ * Récupère la variable d'environnement demandée et les renvoie
+ * (renvoie null si aucune variable n'a été trouvée)
+ */
+function env(string $cle)
 {
-    $valeur = $_ENV[$cle] ?? getenv($cle);   // le fichier .env, sinon l'environnement du système
 
-    return $valeur === false ? $defaut : $valeur;
+    if (array_key_exists($cle, $_ENV)) {
+        return $_ENV[$cle];
+    }
+
+    $valeur = getenv($cle);
+    if ($valeur !== false) {
+        return $valeur;
+    }
+
+    return null;
 }

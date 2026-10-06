@@ -1,11 +1,13 @@
 <?php
     require __DIR__ . '/../Core/AutoLoader.php';
+    require __DIR__ . '/../Core/Db.php';
 
     //récupère le paramètre url de la requête et si celle-ci est null, l'url sera celle de la page d'accueil
     $urlToParse = isset($_GET['url']) ? $_GET['url'] : 'home';
     $postParams = $_POST;
     // ouverture du Tampon
     View::openBuffer();
+
     try
     {
         // appel du contrôleur demandé

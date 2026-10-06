@@ -1,12 +1,11 @@
 <?php
 require_once __DIR__ . "/../../../Core/Constants.php";
-
 echo '<h1>Mot de passe oublié</h1>';
-if($error !== null){
-    echo '<p style="color: red;">'. htmlspecialchars($error) .'</p>';
+if(!empty($error)){
+    echo '<p style="color: red;">'. htmlspecialchars($error[0]) .'</p>';
 }
 echo '<span>';
-echo    '<form action="' . '/index.php?url=register/register' .'" method="post">';
+echo    '<form action="/index.php?url=forgottenpassword/Forgottenpassword" method="post">';
 echo        '<ul>';
 echo            '<li>';
 echo                '<p>';
