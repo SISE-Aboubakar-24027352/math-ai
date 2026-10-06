@@ -30,6 +30,6 @@ final class RegisterController {
                 exit;
             }
         }
-        echo View::show('register/registerView', array( 'errors' => $errors,'success' => $success, 'formData' => $postParams ));
+        echo View::show('registerView', array( 'errors' => $errors,'success' => $success, 'formData' => $postParams ));
     }
 }

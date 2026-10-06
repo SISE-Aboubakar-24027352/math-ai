@@ -25,16 +25,12 @@
 </main>
 
 <footer class="footer">
-    <div class="div-footer">
-        <h3>
-            <ul>
-                <li> <a href="/">Accueil</a></li>
-                <li> <a href="/about.php"> A propos</a></li>
-                <li> <a href="/contact.php"> Nous contacter</a> </li>
-                <li> <a href="/mentions.php"> Mentions légales </a></li>                    
-            </ul>
-        </h3>
-    </div>
+    <ul>
+        <li> <a href="/">Accueil</a></li>
+        <li> <a href="/sitemap"> Plan du site</a></li>
+        <li> <a href="/contact"> Nous contacter</a> </li>
+        <li> <a href="/mentions"> Mentions légales </a></li>                    
+    </ul>
 </footer>
 </body>
 </html>
