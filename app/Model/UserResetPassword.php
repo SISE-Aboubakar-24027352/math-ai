@@ -1,4 +1,6 @@
 <?php
+
+namespace App\Model;
 final class UserResetPassword {
     public function __construct(private readonly string $password) {}
 
