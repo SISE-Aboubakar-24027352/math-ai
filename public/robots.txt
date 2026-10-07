@@ -1,10 +1,4 @@
 User-agent: * 
 Allow: /
 
-Disallow: //
-
-Allow: /css/
-Allow: /js/
-Allow: /images/
-
-Sitemap: https://www.mathai.fr/sitemap.xml
+Sitemap: https://webserver-s301.alwaysdata.net/sitemap.xml
