@@ -27,7 +27,7 @@ final class Controller
         }
 
         if (empty($A_urlSegments[1])) {
-            $A_urlSegments[1] = 'homeAction';
+            $A_urlSegments[1] = 'defaultAction';
         } else {
             $A_urlSegments[1] = $A_urlSegments[1] . 'Action';
         }
