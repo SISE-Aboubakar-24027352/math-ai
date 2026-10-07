@@ -108,6 +108,8 @@ main {
 
 main > * {
     width: 100%;
+    justify-self: center;
+    margin:1rem;
 }
 
 a {
