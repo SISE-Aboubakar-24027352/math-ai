@@ -18,6 +18,13 @@ final class Db {
 
             // Création de la connexion PDO
             self::$pdo = new PDO($dsn,env('DB_USERNAME'),env('DB_PASSWORD'),$options);
+            // Création de la table users
+            self::$pdo->exec('CREATE TABLE IF NOT EXISTS users (
+        id INT NOT NULL AUTO_INCREMENT,
+        email VARCHAR(100) NOT NULL UNIQUE,
+        password VARCHAR(250) NOT NULL,
+        PRIMARY KEY(id),reset_token VARCHAR(255), reset_token_expiry DATETIME
+    )');
             return self::$pdo;
 
         }catch (PDOException $e){
