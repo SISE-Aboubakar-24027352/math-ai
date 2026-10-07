@@ -4,14 +4,17 @@ use User;
 use PDO;
 
 final class UserRepository {
-    public function __construct(private readonly \PDO $pdo) {}
+    public function __construct($pdo = null) {
+        $this->pdo = $pdo ?? Db::getPdo();
+    }
+
 
     public function findByEmail(string $email): ?User{
         $stmt = $this->pdo->prepare('SELECT id,email,password FROM users WHERE email = :email');
         $stmt->execute(['email' => $email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-        if (!$user) return null;
-        else return new User($user['id'], $user['email'], $user['password']);
+        if (!$user){return null;}
+        else{return new User($user['id'], $user['email'], $user['password']);}
     }
 
     public function emailExists(string $email): bool {

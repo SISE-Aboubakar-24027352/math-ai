@@ -1,23 +1,27 @@
 <?php
     require __DIR__ . '/../Core/AutoLoader.php';
-
-    $S_urlToParse = isset($_GET['url']) ? $_GET['url'] : 'home';
-    $A_postParams = $_POST;
-
-    View::openBuffer(); // on ouvre le tampon d'affichage, les contrôleurs qui appellent des vues les mettront dedans
+    require __DIR__ . '/../Core/Db.php';
+    session_start();
+    //récupère le paramètre url de la requête et si celle-ci est null, l'url sera celle de la page d'accueil
+    $urlToParse = isset($_GET['url']) ? $_GET['url'] : 'home';
+    $postParams = $_POST;
+    // ouverture du Tampon
+    View::openBuffer();
 
     try
     {
-
-        $O_controller = new Controller($S_urlToParse, $A_postParams);
-        $O_controller->execute();
+        // appel du contrôleur demandé
+        $controller = new Controller($urlToParse, $postParams);
+        $controller->execute();
 
     }
-    catch (ControllerException $O_exception)
+    catch (ControllerException $exception)
     {
-        echo ('Une erreur s\'est produite : ' . $O_exception->getMessage());
+        // renvoie une erreur dans le tampon si il y a un problème
+        echo ('Une erreur s\'est produite : ' . $exception->getMessage());
     }
 
-
-    $contenuPourAffichage = View::getBufferContent();
-    echo View::show('layout', array('body' => $contenuPourAffichage));
+    // récupération du contenu et fermeture du tampon
+    $ViewContent = View::getBufferContent();
+    //affichage final de la vue demandée
+    echo View::show('layout', array('body' => $ViewContent));

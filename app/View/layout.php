@@ -10,12 +10,13 @@
 <body>
 <header>
     <nav>
-        <?php $user = $_SESSION['username'] ?? null; if ($user === null) { ?>
-            <a href="/">MathsAI</a>
-            | <a href="/login">Connexion</a>
-            | <a href="/register">Inscription</a>
+        <a href="/index.php">MathsAI</a>
+        <?php $user = $_SESSION['user_email'] ?>
+        <?php if ($user === null) { ?>
+            <a href="/index.php?url=login/login">Connexion</a>
+            <a href="/index.php?url=register/register">Inscription</a>
         <?php } else { ?>
-            | <a href="index.php?action=logout">Déconnexion</a>
+            <a href="index.php?url=login/logout">Déconnexion</a>
         <?php } ?>
     </nav>
 </header>
