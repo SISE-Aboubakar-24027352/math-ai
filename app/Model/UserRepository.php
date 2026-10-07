@@ -1,6 +1,7 @@
 <?php
 
-use User;
+namespace App\Model;
+
 use PDO;
 
 final class UserRepository {
@@ -29,6 +30,22 @@ final class UserRepository {
         $stmt->execute(['email' => $email, 'password' => $hashed_password]);
         $id = $this->pdo->lastInsertId();
         return new User ($id, $email, $hashed_password);
+    }
+
+    public function deleteUser(string $email, string $password): User {
+        $user = $this->findByEmail($email);
+        if ($user === null) {
+            throw new \InvalidArgumentException('Aucun utilisateur trouvé pour cet email.');
+        }
+
+        if (!$user->verifyPassword($password)) {
+            throw new \InvalidArgumentException('Le mot de passe est incorrect.');
+        }
+
+        $stmt = $this->pdo->prepare('DELETE FROM users WHERE email = :email');
+        $stmt->execute(['email' => $email]);
+
+        return $user;
     }
 
     public function updateUser(string $email, string $password): User {
