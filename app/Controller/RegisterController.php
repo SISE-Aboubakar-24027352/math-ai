@@ -26,13 +26,15 @@ final class RegisterController {
                 if ($repository->emailExists($email)) {
                     $errors[] = 'Un compte existe déjà avec cet email.';
                 }else{
-                    $repository->createUser($email, $password);
+                    $user = $repository->createUser($email, $password);
                     $success = true;
+                    $_SESSION['id'] = $user->id;
+                    $_SESSION['email'] = $user->email;
                     header('Location: index.php?action=login');
                     exit;
                 }
             }
         }
-        echo View::show('registerView', array( 'errors' => $errors,'success' => $success, 'formData' => $postParams));
+        echo View::show('Register', array( 'errors' => $errors,'success' => $success, 'formData' => $postParams));
     }
 }

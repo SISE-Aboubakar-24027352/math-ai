@@ -1,12 +1,15 @@
 <?php
-require_once __DIR__ . "/../../../Core/Constants.php";
-$error = $A_view['errors'];
+require_once __DIR__ . "/../../Core/Constants.php";
+$message = $A_view['message'];
+if(!empty($message)){
+    echo '<p style="color: red;">'. htmlspecialchars($error[0]) .'</p>';
+}
 echo '<h1>Mot de passe oublié</h1>';
 if(!empty($error)){
     echo '<p style="color: red;">'. htmlspecialchars($error[0]) .'</p>';
 }
 echo '<span>';
-echo    '<form action="/index.php?url=forgottenpassword/Forgottenpassword" method="post">';
+echo    '<form action="/index.php?url=forgottenpassword/forgottenpassword" method="post">';
 echo        '<ul>';
 echo            '<li>';
 echo                '<p>';

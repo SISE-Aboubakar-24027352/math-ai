@@ -1,8 +1,7 @@
 <?php
-
 final class ForgottenPasswordController
 {
-    public function ForgottenPasswordController(array $parameters, array $postParams): void
+    public function forgottenPasswordAction(array $parameters, array $postParams): void
     {
         global $pdo;
         if (!empty($postParams["email"])) {
@@ -10,8 +9,7 @@ final class ForgottenPasswordController
             $repository = new UserRepository($pdo);
             if (!$repository->emailExists($email)) {
                 $message = 'Si votre adresse e-mail est correcte, un email de réinitialisation a été envoyé.';
-            }
-            else {
+            } else {
                 $token = bin2hex(random_bytes(32));
                 $expiry = (new DateTimeImmutable('+15 minutes'))->format('Y-m-d H:i:s');
                 $repository->setResetToken($email, $token, $expiry);
@@ -19,14 +17,15 @@ final class ForgottenPasswordController
                     . ($_SERVER['HTTP_HOST'] ?? 'localhost')
                     . '/index.php?url=forgottenPassword/reset&token=' . urlencode($token);
                 $userMail = new UserMail($email);
-                $content = $userMail->createResetPasswordMessage($email,$resetLink);
+                $content = $userMail->createResetPasswordMessage($email, $resetLink);
                 if ($userMail->sendMail($content)) {
                     $message = 'Si votre adresse e-mail est correcte, un email de réinitialisation a été envoyé.';
-                }
-                else $message = 'Une erreur est survenue lors de l\'envoi de l\'email.';
+                } else $message = 'Une erreur est survenue lors de l\'envoi de l\'email.';
             }
         }
-        echo View::show('mdpOublie', array('message' => $message, 'formData' => $postParams));
+        echo View::show('ForgottenPassword', [
+            'message' => $message,
+            'formData' => $postParams,
+        ]);
     }
-
 }

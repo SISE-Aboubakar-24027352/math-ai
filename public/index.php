@@ -24,4 +24,4 @@
     // récupération du contenu et fermeture du tampon
     $ViewContent = View::getBufferContent();
     //affichage final de la vue demandée
-    echo View::show('layout', array('body' => $ViewContent));
+    echo View::show('Layout', array('body' => $ViewContent));

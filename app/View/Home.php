@@ -1,5 +1,9 @@
 <?php
-require_once __DIR__ . "/../../../Core/Constants.php";
+require_once __DIR__ . "/../../Core/Constants.php";
+$isLogged = isset($_SESSION['email']);
+if($isLogged) {
+    echo '<h2> Bonjour, ' . $_SESSION['email'] . '</h2>';
+}
 echo '<h1>Accueil</h1>';
 echo '<p id="homeDescription">Bienvenue sur Math-Ai, le premier site de cours de mathématique programme lycée entièrement géré par l’intelligence artificielle ! Il va comporter grand nombre de cours et exercices, qui seront entièrement générés par l’intelligence artificielle !</p>';
 echo '<div class="infoCard-grid">';
