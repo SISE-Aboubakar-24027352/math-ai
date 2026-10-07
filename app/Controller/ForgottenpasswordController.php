@@ -6,7 +6,7 @@ final class ForgottenPasswordController
         global $pdo;
         if (!empty($postParams["email"])) {
             $email = filter_var(trim($postParams["email"]), FILTER_VALIDATE_EMAIL);
-            $repository = new UserRepository($pdo);
+            $repository = new UserRepository();
             if (!$repository->emailExists($email)) {
                 $message = 'Si votre adresse e-mail est correcte, un email de réinitialisation a été envoyé.';
             } else {

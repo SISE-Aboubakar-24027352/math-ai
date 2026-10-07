@@ -84,7 +84,8 @@ nav a:hover::before {
 }
 
 main {
-    justify-items: center;
+    justify-self: center;
+    margin:1rem;
 }
 
 a {

@@ -10,7 +10,7 @@
 <body>
 <header>
     <nav>
-        <a href="/index.php">MathsAI</a>
+        <a href="/">MathsAI</a>
         <?php $user = $_SESSION['email'] ?? null ?>
         <?php if ($user === null) { ?>
             <a href="/index.php?url=login/login">Connexion</a>
