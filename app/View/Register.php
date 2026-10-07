@@ -38,7 +38,7 @@ if(!empty($error)){
                 <input class="textInput" type="password" name="confirmation" value="" required>
             </li>
         </li>
-        <button type="submit">S\'inscrire</button>
+        <button type="submit">S'inscrire</button>
        </ul>
    </form>
    <p>vous avez déjà un compte ? Connectez vous <a href="/index.php?url=login/login">ici</a></p>

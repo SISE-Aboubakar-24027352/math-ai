@@ -1,7 +1,7 @@
 <?php
 
 final class ContactController{
-    public function contactAction(Array $parameter){
+    public function defaultAction(Array $parameter){
         echo View::show('Contact');
     }
 }

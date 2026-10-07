@@ -16,9 +16,9 @@ if(!empty($error)){
 <?php for ($i = 1; $i <= 12; $i++) { ?>
     <a class="cardTitle" href="/">
         <div class="infoCard">
-            <h2>Title' . $i . '</h2>
+            <h2>Title<?= $i ?></h2>
             <p>
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, voluptates explicabo.';
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, voluptates explicabo.
             </p>
         </div>
     </a>
