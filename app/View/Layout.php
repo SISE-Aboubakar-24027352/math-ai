@@ -28,9 +28,9 @@
 <footer class="footer">
     <ul>
         <li> <a href="/">Accueil</a></li>
-        <li> <a href="/index.php?url=sitemap/sitemap"> Plan du site</a></li>
-        <li> <a href="/index.php?url=contact/contact"> Nous contacter</a> </li>
-        <li> <a href="/index.php?url=mentions/mentions"> Mentions légales </a></li>
+        <li> <a href="/index.php?url=sitemap"> Plan du site</a></li>
+        <li> <a href="/index.php?url=contact"> Nous contacter</a> </li>
+        <li> <a href="/index.php?url=mentions"> Mentions légales </a></li>
     </ul>
 </footer>
 </body>

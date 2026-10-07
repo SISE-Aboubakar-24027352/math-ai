@@ -26,8 +26,8 @@ if(!empty($error)){
                 <input type="password" name="password" required>
             </p>
             </li>
+            <button type="submit">Se connecter</button>
         </ul>
-        <button type="submit">Se connecter</button>
     </form>
     <p>vous n'avez pas de compte ? Inscrivez-vous <a href="/index.php?url=register/register">ici</a>.</p>
     <p><a href="/index.php?url=forgottenpassword/forgottenpassword">mot de passe oublié</a> ?
