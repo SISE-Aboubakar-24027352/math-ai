@@ -3,6 +3,7 @@ final class ForgottenPasswordController
 {
     public function forgottenPasswordAction(array $parameters, array $postParams): void
     {
+        $message = '';
         global $pdo;
         if (!empty($postParams["email"])) {
             $email = filter_var(trim($postParams["email"]), FILTER_VALIDATE_EMAIL);

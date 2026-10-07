@@ -23,6 +23,6 @@ echo            '</li>';
 echo            '<button type="submit">Se connecter</button>';
 echo        '</ul>';
 echo    '</form>';
-echo    '<p>vous n\'avez pas de compte ? Inscrivez-vous <a href="/index.php?url=login/login">ici</a>.</p>';
+echo    '<p>vous n\'avez pas de compte ? Inscrivez-vous <a href="/index.php?url=register/register">ici</a>.</p>';
 echo    '<p><a href="/index.php?url=forgottenpassword/forgottenpassword">mot de passe oublié</a> ?';
 echo '</span>';
