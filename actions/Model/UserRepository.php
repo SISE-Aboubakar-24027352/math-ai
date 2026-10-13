@@ -1,5 +1,5 @@
 <?php
-
+namespace app\Model;
 final class UserRepository {
     private $pdo;
     public function __construct($pdo = null) {

@@ -1,10 +1,8 @@
 <?php
-
+namespace app\Model;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
-
-require_once __DIR__ . '/../../vendor/autoload.php';
 
 final class UserMail {
     public function __construct(private string $email) {}

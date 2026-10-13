@@ -1,5 +1,5 @@
 <?php
-
+namespace app\Controller;
 final class LoginController
 {
     public function loginAction(array $parameters, array $postParams)

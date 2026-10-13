@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "/../../Core/Constants.php";
+namespace app\View;
 ?>
 <section class="sitemap">
     <h1>Plan du site</h1>

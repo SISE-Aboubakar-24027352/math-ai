@@ -1,5 +1,6 @@
 <?php
-
+namespace Core;
+use Core\exceptions\ControllerException;
 final class Controller
 {
     /** @var array<string, mixed> */

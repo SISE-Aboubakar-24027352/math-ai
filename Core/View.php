@@ -1,5 +1,6 @@
-<?php 
-require_once __DIR__ . '/Constants.php';
+<?php
+
+namespace Core;
 final class View
 {
     public static function openBuffer(): void
@@ -18,12 +19,12 @@ final class View
      */
     public static function show(string $S_location,array $A_array = []):string|false
     {
-        $S_file = Constants::viewRepository() . $S_location . '.php';
-        
+        $S_file = __DIR__ . '/../actions/View/' . $S_location . '.php';
+        extract($A_array);
         $A_view = $A_array;
-        ob_start();
-        include $S_file;
-        return ob_get_clean();
+        self::openBuffer();
+        require $S_file;
+        return self::getBufferContent();
     }
 }
 ?>

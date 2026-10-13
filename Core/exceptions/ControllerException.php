@@ -1,3 +1,3 @@
 <?php
-
-class ControllerException extends Exception {}
+namespace Core\exceptions;
+class ControllerException extends \Exception {}

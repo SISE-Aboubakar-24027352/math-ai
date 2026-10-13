@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "/../../Core/Constants.php";
+namespace app\View;
 $message = $A_view['message'];
 echo '<h1>Mot de passe oublié</h1>';
 if(!empty($message)){

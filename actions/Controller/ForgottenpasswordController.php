@@ -1,4 +1,5 @@
 <?php
+namespace app\Controller;
 final class ForgottenPasswordController
 {
     public function forgottenPasswordAction(array $parameters, array $postParams): void

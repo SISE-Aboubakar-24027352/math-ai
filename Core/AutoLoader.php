@@ -1,5 +1,15 @@
 <?php
+namespace Core;
 
+spl_autoload_register(function (string $classe): void {
+    $fichier = __DIR__ . '/../' . str_replace('\\', '/', $classe) . '.php';
+    if (is_file($fichier)) {
+        require $fichier;
+    }
+});
+
+
+/*
 require __DIR__ . '/Constants.php';
 
 final class AutoLoader
@@ -25,7 +35,7 @@ final class AutoLoader
 }
 
 spl_autoload_register('AutoLoader::loadClass');
-
+*/
 
 
 
