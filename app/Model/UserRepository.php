@@ -1,8 +1,7 @@
 <?php
 
-use PDO;
-
 final class UserRepository {
+    private $pdo;
     public function __construct($pdo = null) {
         $this->pdo = $pdo ?? Db::getPdo();
     }
