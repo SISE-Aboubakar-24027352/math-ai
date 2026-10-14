@@ -1,13 +1,18 @@
 <?php
 final class ForgottenPasswordController
 {
+    public function defaultAction(array $parameters, array $postParams)
+    {
+        header('Location: /index.php?url=home');
+        exit;
+    }
     public function forgottenPasswordAction(array $parameters, array $postParams): void
     {
         $message = '';
         global $pdo;
         if (!empty($postParams["email"])) {
             $email = filter_var(trim($postParams["email"]), FILTER_VALIDATE_EMAIL);
-            $repository = new UserRepository($pdo);
+            $repository = new UserRepository();
             if (!$repository->emailExists($email)) {
                 $message = 'Si votre adresse e-mail est correcte, un email de réinitialisation a été envoyé.';
             } else {

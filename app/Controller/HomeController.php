@@ -1,6 +1,6 @@
 <?php
 final class HomeController{
-    public function homeAction(Array $parameter){
+    public function defaultAction(Array $parameter){
         echo View::show('Home');
-}
+    }
 }

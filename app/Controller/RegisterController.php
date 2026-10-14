@@ -1,5 +1,10 @@
 <?php
 final class RegisterController {
+
+    public function defaultAction(Array $parameter){
+        echo View::show('Home');
+    }
+    
     public function registerAction(Array $parameters, Array $postParams)
     {
         $errors = [];

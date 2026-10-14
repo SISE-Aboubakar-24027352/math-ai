@@ -2,6 +2,12 @@
 
 final class LoginController
 {
+    public function defaultAction(array $parameters, array $postParams)
+    {
+        header('Location: /index.php?url=home');
+        exit;
+    }
+
     public function loginAction(array $parameters, array $postParams)
     {
         $errors = [];
@@ -21,7 +27,7 @@ final class LoginController
                 if ($user !== null && $user->verifyPassword($password)) {
                     $_SESSION['id'] = $user->id;
                     $_SESSION['email'] = $user->email;
-                    header('Location: /index.php?url=home/home');
+                    header('Location: /index.php?url=home');
                     exit;
                 } else {
                     $errors[] = 'Email ou mot de passe incorrect.';
@@ -33,7 +39,7 @@ final class LoginController
     public function logoutAction(array $parameters, array $postParams)
     {
         session_destroy();
-        header('Location: /index.php?url=home/home');
+        header('Location: /index.php?url=home');
         exit;
     }
 }

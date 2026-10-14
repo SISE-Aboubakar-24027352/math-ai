@@ -10,7 +10,7 @@
 <body>
 <header>
     <nav>
-        <a href="/index.php">MathsAI</a>
+        <a href="/">MathsAI</a>
         <?php $user = $_SESSION['email'] ?? null ?>
         <?php if ($user === null) { ?>
             <a href="/index.php?url=login/login">Connexion</a>
@@ -28,9 +28,9 @@
 <footer class="footer">
     <ul>
         <li> <a href="/">Accueil</a></li>
-        <li> <a href="/index.php?url=sitemap/sitemap"> Plan du site</a></li>
-        <li> <a href="/index.php?url=contact/contact"> Nous contacter</a> </li>
-        <li> <a href="/index.php?url=mentions/mentions"> Mentions légales </a></li>
+        <li> <a href="/index.php?url=sitemap"> Plan du site</a></li>
+        <li> <a href="/index.php?url=contact"> Nous contacter</a> </li>
+        <li> <a href="/index.php?url=mentions"> Mentions légales </a></li>
     </ul>
 </footer>
 </body>
