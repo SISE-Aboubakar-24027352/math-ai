@@ -1,4 +1,6 @@
 <?php
+
+namespace Core;
 final class Db {
     private static ?PDO $pdo = null;
 

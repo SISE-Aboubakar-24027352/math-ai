@@ -1,5 +1,5 @@
 <?php
-namespace app\Controller;
+namespace actions\Controller;
 final class MentionsController
 {
     public function mentionsAction(array $parameters, array $postParams)

@@ -20,11 +20,10 @@ final class View
     public static function show(string $S_location,array $A_array = []):string|false
     {
         $S_file = __DIR__ . '/../actions/View/' . $S_location . '.php';
-        extract($A_array);
+        $data += ['LoginUser' => $_SESSION['user'] ?? null];
         $A_view = $A_array;
-        self::openBuffer();
+        extract($A_view, EXTR_SKIP);
         require $S_file;
-        return self::getBufferContent();
     }
 }
 ?>

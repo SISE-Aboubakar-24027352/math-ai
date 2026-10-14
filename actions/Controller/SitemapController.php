@@ -1,5 +1,5 @@
 <?php
-namespace app\Controller;
+namespace actions\Controller;
 final class SitemapController
 {
     public function sitemapAction(array $parameters, array $postParams)

@@ -1,5 +1,5 @@
 <?php
-namespace app\Controller;
+namespace actions\Controller;
 final class RegisterController {
     public function registerAction(Array $parameters, Array $postParams)
     {

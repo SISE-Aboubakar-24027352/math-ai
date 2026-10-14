@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Controller;
+namespace actions\Controller;
 
 final class ContactController{
     public function contactAction(Array $parameter){

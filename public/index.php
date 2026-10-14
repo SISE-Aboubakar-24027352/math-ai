@@ -1,27 +1,30 @@
 <?php
-    require __DIR__ . '/../Core/AutoLoader.php';
-    require __DIR__ . '/../Core/Db.php';
+$repository = new UserRepository($pdo);
+
+$routes = require $racine . '/../Core/config/routes.php';
+$method = $_SERVER['REQUEST_METHOD'];
+foreach ($route as [$routeMethod, $routePath, [$class, $action]]) {
+    if ($routeMethod === $method && $routePath === $routePath) {
+
+    }
+}
+/*
+    $racine = __DIR__;
+    require_once $racine . '/../Core/AutoLoader.php';
+    use Core\View;
+    use Core\Controller;
+    use Core\Db;
+
     session_start();
-    //récupère le paramètre url de la requête et si celle-ci est null, l'url sera celle de la page d'accueil
-    $urlToParse = isset($_GET['url']) ? $_GET['url'] : 'home';
-    $postParams = $_POST;
-    // ouverture du Tampon
-    View::openBuffer();
 
-    try
-    {
-        // appel du contrôleur demandé
-        $controller = new Controller($urlToParse, $postParams);
-        $controller->execute();
+    $routes = require $racine . '/../Core/config/routes.php';
+    $chemin = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?: '/';
+    $chemin = rtrim($chemin, '/') ?: '/';
 
+    if (!isset($routes[$chemin])) {
+        http_response_code(404);
+        echo View::show('404', ['chemin' => $chemin]);
+        exit;
     }
-    catch (ControllerException $exception)
-    {
-        // renvoie une erreur dans le tampon si il y a un problème
-        echo ('Une erreur s\'est produite : ' . $exception->getMessage());
-    }
-
-    // récupération du contenu et fermeture du tampon
-    $ViewContent = View::getBufferContent();
-    //affichage final de la vue demandée
     echo View::show('Layout', array('body' => $ViewContent));
+*/
