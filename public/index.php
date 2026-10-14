@@ -1,13 +1,47 @@
 <?php
-$repository = new UserRepository($pdo);
 
-$routes = require $racine . '/../Core/config/routes.php';
+$root = __DIR__;
+require_once $root . '/../Core/AutoLoader.php';
+use Core\View;
+use Core\Controller;
+use Core\Db;
+use actions\Controller\{HomeController,
+LoginController,
+RegisterController,
+ForgottenpasswordController,
+ContactController,
+MentionsController,
+SitemapController};
+use actions\Model\UserRepository;
+
+$repository = new UserRepository();
+$controllers = [
+    HomeController::class     => fn() => new HomeController(),
+    LoginController::class      => fn() => new LoginController(),
+    RegisterController::class => fn() => new RegisterController(),
+    ForgottenpasswordController::class => fn() => new ForgottenpasswordController(),
+    ContactController::class => fn() => new ContactController(),
+    MentionsController::class => fn() => new MentionsController(),
+    SitemapController::class => fn() => new SitemapController()
+];
+
+
+$routes = require $root . '/../Core/config/routes.php';
 $method = $_SERVER['REQUEST_METHOD'];
-foreach ($route as [$routeMethod, $routePath, [$class, $action]]) {
+View::openBuffer();
+foreach ($routes as [$routeMethod, $routePath, [$class, $action]]) {
     if ($routeMethod === $method && $routePath === $routePath) {
-
+        $controller = $controllers[$class]();
+        $controller->$action();
+        $ViewContent = View::getBufferContent();
+        echo View::show('Layout',array('body' => $ViewContent));
+        exit;
     }
+
 }
+View::closeBuffer();
+http_response_code(404);
+View::show('404', ['path' => $path]);
 /*
     $racine = __DIR__;
     require_once $racine . '/../Core/AutoLoader.php';

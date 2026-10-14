@@ -1,6 +1,8 @@
 <?php
 namespace actions\Controller;
+use Core\View;
 final class RegisterController {
+    public function __construct(private readonly UserRepository $repository) {}
     public function registerAction(Array $parameters, Array $postParams)
     {
         $errors = [];

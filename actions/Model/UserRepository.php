@@ -1,7 +1,7 @@
 <?php
-namespace app\Model;
+namespace actions\Model;
+use Core\Db;
 final class UserRepository {
-    private $pdo;
     public function __construct($pdo = null) {
         $this->pdo = $pdo ?? Db::getPdo();
     }

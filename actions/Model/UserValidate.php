@@ -1,5 +1,5 @@
 <?php
-namespace app\Model;
+namespace actions\Model;
 final class UserValidate {
 
     public function __construct(public readonly string $email, public readonly string $password, public readonly string $confirmation) {}

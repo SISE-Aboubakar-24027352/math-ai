@@ -1,5 +1,5 @@
 <?php
-namespace app\Model;
+namespace actions\Model;
 final class User {
 public function __construct(
     public readonly int $id,

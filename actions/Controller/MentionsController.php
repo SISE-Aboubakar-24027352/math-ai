@@ -1,8 +1,9 @@
 <?php
 namespace actions\Controller;
+use Core\View;
 final class MentionsController
 {
-    public function mentionsAction(array $parameters, array $postParams)
+    public function mentionsForm()
     {
         echo View::show('Mentions');
     }

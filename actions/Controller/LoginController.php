@@ -1,7 +1,9 @@
 <?php
 namespace actions\Controller;
+use Core\View;
 final class LoginController
 {
+    public function __construct(private readonly UserRepository $repository) {}
     public function loginAction(array $parameters, array $postParams)
     {
         $errors = [];

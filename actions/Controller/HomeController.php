@@ -1,7 +1,9 @@
 <?php
 namespace actions\Controller;
+use Core\View;
 final class HomeController{
-    public function homeAction(Array $parameter){
+    public function homeForm()
+    {
         echo View::show('Home');
-}
+    }
 }

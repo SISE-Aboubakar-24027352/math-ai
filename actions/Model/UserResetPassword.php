@@ -1,5 +1,5 @@
 <?php
-namespace app\Model;
+namespace actions\Model;
 final class UserResetPassword {
     public function __construct(private readonly string $password) {}
 

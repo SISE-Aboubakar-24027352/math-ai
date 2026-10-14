@@ -1,9 +1,11 @@
 <?php
 
 namespace Core;
+
+use PDO;
+use PDOException;
 final class Db {
     private static ?PDO $pdo = null;
-
     public static function getPDO(): PDO{
         require_once __DIR__  . '/env.php';
         chargerEnv(__DIR__.'/../.env');

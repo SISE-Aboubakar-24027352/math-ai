@@ -1,9 +1,9 @@
 <?php
 
 namespace actions\Controller;
-
+use Core\View;
 final class ContactController{
-    public function contactAction(Array $parameter){
+    public function contactForm(){
         echo View::show('Contact');
     }
 }

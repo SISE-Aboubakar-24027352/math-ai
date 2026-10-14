@@ -1,8 +1,9 @@
 <?php
 namespace actions\Controller;
+use Core\View;
 final class SitemapController
 {
-    public function sitemapAction(array $parameters, array $postParams)
+    public function sitemapForm()
     {
         echo View::show('SiteMap');
     }

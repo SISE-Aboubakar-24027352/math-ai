@@ -1,7 +1,11 @@
 <?php
 namespace actions\Controller;
+use Core\View;
 final class ForgottenPasswordController
+
+
 {
+    public function __construct(private readonly UserRepository $repository) {}
     public function forgottenPasswordAction(array $parameters, array $postParams): void
     {
         $message = '';
@@ -25,6 +29,9 @@ final class ForgottenPasswordController
                 } else $message = 'Une erreur est survenue lors de l\'envoi de l\'email.';
             }
         }
+
+    }
+    public function forgottenpasswordForm(Array $parameter) {
         echo View::show('ForgottenPassword', [
             'message' => $message,
             'formData' => $postParams,
