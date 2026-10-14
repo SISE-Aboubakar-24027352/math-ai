@@ -1,11 +1,19 @@
 <?php
 final class RegisterController {
 
-    public function defaultAction(Array $parameter){
+    /**
+     * @param array<string, mixed> $parameter
+     */
+    public function defaultAction(Array $parameter): void
+    {
         echo View::show('Home');
     }
-    
-    public function registerAction(Array $parameters, Array $postParams)
+
+    /**
+     * @param array<string, mixed> $parameters
+     * @param array<string, mixed> $postParams
+     */
+    public function registerAction(Array $parameters, Array $postParams): void
     {
         $errors = [];
         $success = false;

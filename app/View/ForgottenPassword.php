@@ -1,5 +1,7 @@
 <?php
 require_once __DIR__ . "/../../Core/Constants.php";
+
+$A_view = $A_view ?? [];
 $message = $A_view['message'];
 ?>
 

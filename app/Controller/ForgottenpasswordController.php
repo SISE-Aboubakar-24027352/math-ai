@@ -1,11 +1,20 @@
 <?php
-final class ForgottenPasswordController
+final class ForgottenpasswordController
 {
-    public function defaultAction(array $parameters, array $postParams)
+    /**
+     * @param array<string, mixed> $parameters
+     * @param array<string, mixed> $postParams
+     */
+    public function defaultAction(array $parameters, array $postParams):void
     {
         header('Location: /index.php?url=home');
         exit;
     }
+
+    /**
+     * @param array<string, mixed> $parameters
+     * @param array<string, mixed> $postParams
+     */
     public function forgottenPasswordAction(array $parameters, array $postParams): void
     {
         $message = '';

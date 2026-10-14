@@ -1,6 +1,10 @@
 <?php
 final class HomeController{
-    public function defaultAction(Array $parameter){
+    /**
+     * @param array<string, mixed> $parameter
+     */
+    public function defaultAction(Array $parameter): void
+    {
         echo View::show('Home');
     }
 }

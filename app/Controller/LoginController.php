@@ -2,13 +2,21 @@
 
 final class LoginController
 {
-    public function defaultAction(array $parameters, array $postParams)
+    /**
+     * @param array<string, mixed> $parameters
+     * @param array<string, mixed> $postParams
+     */
+    public function defaultAction(array $parameters, array $postParams): void
     {
         header('Location: /index.php?url=home');
         exit;
     }
 
-    public function loginAction(array $parameters, array $postParams)
+    /**
+     * @param array<string, mixed> $parameters
+     * @param array<string, mixed> $postParams
+     */
+    public function loginAction(array $parameters, array $postParams): void
     {
         $errors = [];
 
@@ -36,7 +44,12 @@ final class LoginController
         }
         echo View::show('Login', array('errors' => $errors, 'formData' => $postParams));
     }
-    public function logoutAction(array $parameters, array $postParams)
+
+    /**
+     * @param array<string, mixed> $parameters
+     * @param array<string, mixed> $postParams
+     */
+    public function logoutAction(array $parameters, array $postParams): void
     {
         session_destroy();
         header('Location: /index.php?url=home');
