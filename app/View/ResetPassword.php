@@ -4,7 +4,7 @@ $A_view = $A_view ?? [];
 $error = $A_view['errors'];
 ?>
 
-<h1>Reset du mot de passe</h1>
+<h1>Réinitialiser le mot de passe</h1>
 
 <?php
 if(!empty($error)){
