@@ -1,4 +1,4 @@
-name: Déploiement Alwaysdata
+name: Alwaysdata Deployement
 
 on:
   push:
@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Vérifier le code
+      - name: Check the code
         uses: actions/checkout@v4
 
       - name: Deploy features via SSH
