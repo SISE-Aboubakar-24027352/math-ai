@@ -1,17 +1,16 @@
 <?php
 
-use PDO;
-
 final class UserRepository {
+    private ?PDO $pdo = null;
     public function __construct() {
-        $this->pdo = $pdo ?? Db::getPdo();
+        $this->pdo = Db::getPdo();
     }
 
 
     public function findByEmail(string $email): ?User{
         $stmt = $this->pdo->prepare('SELECT id,email,password FROM users WHERE email = :email');
         $stmt->execute(['email' => $email]);
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        $user = $stmt->fetch(\PDO::FETCH_ASSOC);
         if (!$user){return null;}
         else{return new User($user['id'], $user['email'], $user['password']);}
     }
@@ -27,6 +26,7 @@ final class UserRepository {
         $stmt = $this->pdo->prepare('INSERT INTO users (email, password) VALUES (:email, :password)');
         $stmt->execute(['email' => $email, 'password' => $hashed_password]);
         $id = $this->pdo->lastInsertId();
+        $id = (int) $id;
         return new User ($id, $email, $hashed_password);
     }
 
@@ -54,19 +54,19 @@ final class UserRepository {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $this->pdo->prepare('UPDATE users SET password = :password, reset_token = NULL, reset_token_expiry = NULL WHERE email = :email');
         $stmt->execute(['password' => $hashed_password,'email' => $email]);
-        $id = $user->getId(id);
+        $id = $user->getId();
         return new User ($id, $email, $hashed_password);
     }
 
-    public function setResetToken($email, $token, $expiry) {
+    public function setResetToken(string $email,string $token,string $expiry): bool {
         $stmt = $this->pdo->prepare('UPDATE users SET reset_token = :token, reset_token_expiry = :expiry WHERE email = :email');
         return $stmt->execute(['token' => $token, 'expiry' => $expiry,'email' => $email]);
     }
 
-    public function findByToken($reset_token): ?User {
+    public function findByToken(string $reset_token): ?User {
         $stmt = $this->pdo->prepare('SELECT * FROM users WHERE reset_token = :token');
         $stmt->execute(['token' => $reset_token]);
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        $user = $stmt->fetch(\PDO::FETCH_ASSOC);
         if (!$user) return null;
         else return new User($user['id'], $user['email'], $user['password']);
     }
