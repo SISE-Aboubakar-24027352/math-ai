@@ -28,6 +28,7 @@ final class UserMail {
             $mail->addAddress($this->email);
 
             $mail->Subject = $content['subject'] ?? 'Message';
+            $mail->isHTML(true);
             $mail->Body = $content['message'] ?? '';
             $mail->AltBody = strip_tags($content['message'] ?? '');
 
@@ -43,9 +44,9 @@ final class UserMail {
     public function createResetPasswordMessage(string $email, string $resetLink): array
     {
         $subject = 'Réinitialisation de votre mot de passe';
-        $message = "Bonjour,\n\n";
-        $message .= "Pour réinitialiser votre mot de passe, cliquez sur ce lien :\n";
-        $message .= $resetLink . "\n\n";
+        $message = "Bonjour,<br><br>";
+        $message .= "Pour réinitialiser votre mot de passe, cliquez sur ce lien :<br><br>";
+        $message .= '<a href="' . $resetLink . '">Réinitialiser mon mot de passe</a><br><br>';
         $message .= "Ce lien expirera dans 15 minutes.\n";
 
         return [
