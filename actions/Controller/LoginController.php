@@ -1,24 +1,24 @@
 <?php
 namespace actions\Controller;
 use Core\View;
+use actions\Model\UserRepository;
 final class LoginController
 {
     public function __construct(private readonly UserRepository $repository) {}
-    public function loginAction(array $parameters, array $postParams)
+    public function loginAction()
     {
         $errors = [];
 
-        if (!empty($postParams)) {
-            $email = filter_var(trim($postParams['email'] ?? ''),FILTER_VALIDATE_EMAIL);
-            $password = $postParams['password'] ?? '';
+        if (!empty($_POST)) {
+            $email = filter_var(trim($_POST['email'] ?? ''),FILTER_VALIDATE_EMAIL);
+            $password = $_POST['password'] ?? '';
             
             if ($email === false) {
                 $errors[] = 'L\'adresse email est invalide.';
             }
 
             if (empty($errors)) {
-                $repository = new UserRepository();
-                $user = $repository->findByEmail($email);
+                $user = $this->repository->findByEmail($email);
 
                 if ($user !== null && $user->verifyPassword($password)) {
                     $_SESSION['id'] = $user->id;
@@ -30,7 +30,11 @@ final class LoginController
                 }
             }
         }
-        echo View::show('Login', array('errors' => $errors, 'formData' => $postParams));
+        echo View::show('Login', array('errors' => $errors, 'formData' => $_POST));
+    }
+
+    public function loginForm() {
+        echo View::show('Login', array('errors' => [], 'formData' => []));
     }
     public function logoutAction(array $parameters, array $postParams)
     {

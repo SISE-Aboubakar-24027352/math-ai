@@ -1,18 +1,19 @@
 <?php
 namespace actions\Controller;
 use Core\View;
+use actions\Model\UserRepository;
 final class RegisterController {
     public function __construct(private readonly UserRepository $repository) {}
-    public function registerAction(Array $parameters, Array $postParams)
+    public function registerAction()
     {
         $errors = [];
         $success = false;
 
-        if (!empty($postParams)) {
-            $email =filter_var(trim($postParams['email'] ?? ''),FILTER_VALIDATE_EMAIL);
-            $password = $postParams['password'] ?? '';
-            $confirmation = $postParams['confirmation'] ?? '';
-            //$s_name = trim($A_postParams['name'] ?? '');
+        if (!empty($_POST)) {
+            $email =filter_var(trim($_POST['email'] ?? ''),FILTER_VALIDATE_EMAIL);
+            $password = $_POST['password'] ?? '';
+            $confirmation = $_POST['confirmation'] ?? '';
+            //$s_name = trim($_POST['name'] ?? ''); Nous ajouterons en effet un nom et prénom plus tard.
 
             $userValidate = new UserValidate($email,$password,$confirmation);
             
@@ -25,11 +26,10 @@ final class RegisterController {
             if (!empty($confirmationError)) $errors[] = $confirmationError;
 
             if (empty($errors)) {
-                $repository = new UserRepository();
-                if ($repository->emailExists($email)) {
+                if ($this->repository->emailExists($email)) {
                     $errors[] = 'Un compte existe déjà avec cet email.';
                 }else{
-                    $user = $repository->createUser($email, $password);
+                    $user = $this->repository->createUser($email, $password);
                     $success = true;
                     $_SESSION['id'] = $user->id;
                     $_SESSION['email'] = $user->email;
@@ -39,5 +39,8 @@ final class RegisterController {
             }
         }
         echo View::show('Register', array( 'errors' => $errors,'success' => $success, 'formData' => $postParams));
+    }
+    public function registerForm() {
+        echo View::show('Register', array( 'errors' => [],'success' => null, 'formData' => []));
     }
 }

@@ -17,20 +17,22 @@ use actions\Model\UserRepository;
 $repository = new UserRepository();
 $controllers = [
     HomeController::class     => fn() => new HomeController(),
-    LoginController::class      => fn() => new LoginController(),
-    RegisterController::class => fn() => new RegisterController(),
-    ForgottenpasswordController::class => fn() => new ForgottenpasswordController(),
+    LoginController::class      => fn() => new LoginController($repository),
+    RegisterController::class => fn() => new RegisterController($repository),
+    ForgottenpasswordController::class => fn() => new ForgottenpasswordController($repository),
     ContactController::class => fn() => new ContactController(),
     MentionsController::class => fn() => new MentionsController(),
     SitemapController::class => fn() => new SitemapController()
 ];
 
+$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?: '/';   // "/login?x=1" -> "/login"
+$path = rtrim($path, '/') ?: '/';
 
 $routes = require $root . '/../Core/config/routes.php';
 $method = $_SERVER['REQUEST_METHOD'];
 View::openBuffer();
 foreach ($routes as [$routeMethod, $routePath, [$class, $action]]) {
-    if ($routeMethod === $method && $routePath === $routePath) {
+    if ($routeMethod === $method && $path === $routePath) {
         $controller = $controllers[$class]();
         $controller->$action();
         $ViewContent = View::getBufferContent();

@@ -7,7 +7,7 @@ if(!empty($error)){
 }
 
 echo '<span>';
-echo    '<form action="/index.php?url=register/register" method="post">';
+echo    '<form action="/register" method="post">';
 echo      '<ul>';
 echo            '<li>';
 echo               '<li>';
@@ -36,5 +36,5 @@ echo         '</li>';
 echo         '<button type="submit">S\'inscrire</button>';
 echo        '</ul>';
 echo    '</form>';
-echo    '<p>vous avez déjà un compte ? Connectez vous <a href="/index.php?url=login/login">ici</a></p>';
+echo    '<p>vous avez déjà un compte ? Connectez vous <a href="/login">ici</a></p>';
 echo '</span>';

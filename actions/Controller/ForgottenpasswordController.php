@@ -1,24 +1,22 @@
 <?php
 namespace actions\Controller;
 use Core\View;
+use actions\Model\UserRepository;
 final class ForgottenPasswordController
-
-
 {
     public function __construct(private readonly UserRepository $repository) {}
-    public function forgottenPasswordAction(array $parameters, array $postParams): void
+    public function forgottenpasswordAction(): void
     {
         $message = '';
         global $pdo;
-        if (!empty($postParams["email"])) {
-            $email = filter_var(trim($postParams["email"]), FILTER_VALIDATE_EMAIL);
-            $repository = new UserRepository($pdo);
-            if (!$repository->emailExists($email)) {
+        if (!empty($_POST["email"])) {
+            $email = filter_var(trim($_POST["email"]), FILTER_VALIDATE_EMAIL);
+            if (!$this->repository->emailExists($email)) {
                 $message = 'Si votre adresse e-mail est correcte, un email de réinitialisation a été envoyé.';
             } else {
                 $token = bin2hex(random_bytes(32));
                 $expiry = (new DateTimeImmutable('+15 minutes'))->format('Y-m-d H:i:s');
-                $repository->setResetToken($email, $token, $expiry);
+                $this->repository->setResetToken($email, $token, $expiry);
                 $resetLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://')
                     . ($_SERVER['HTTP_HOST'] ?? 'localhost')
                     . '/index.php?url=forgottenPassword/reset&token=' . urlencode($token);
@@ -29,12 +27,15 @@ final class ForgottenPasswordController
                 } else $message = 'Une erreur est survenue lors de l\'envoi de l\'email.';
             }
         }
-
-    }
-    public function forgottenpasswordForm(Array $parameter) {
-        echo View::show('ForgottenPassword', [
+        echo View::show('Forgottenpassword', [
             'message' => $message,
-            'formData' => $postParams,
+            'formData' => $_POST
+        ]);
+    }
+    public function forgottenpasswordForm() {
+        echo View::show('Forgottenpassword', [
+            'message' => '',
+            'formData' => []
         ]);
     }
 }
