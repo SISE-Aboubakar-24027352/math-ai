@@ -1,6 +1,5 @@
 <?php
 namespace app\View;
-require_once __DIR__ . "/../../Core/Constants.php";
 $isLogged = isset($_SESSION['email']);
 if($isLogged) {?>
     <h2> Bonjour, <?=$_SESSION['email']?></h2><?php
