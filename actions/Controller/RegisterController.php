@@ -2,6 +2,7 @@
 namespace actions\Controller;
 use Core\View;
 use actions\Model\UserRepository;
+use actions\Model\UserValidate;
 final class RegisterController {
     public function __construct(private readonly UserRepository $repository) {}
     public function registerAction()
@@ -24,6 +25,7 @@ final class RegisterController {
             if (!empty($emailError)) $errors[] = $emailError;
             if (!empty($passwordError)) $errors[] = $passwordError;
             if (!empty($confirmationError)) $errors[] = $confirmationError;
+
 
             if (empty($errors)) {
                 if ($this->repository->emailExists($email)) {

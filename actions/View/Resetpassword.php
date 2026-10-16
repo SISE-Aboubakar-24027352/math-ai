@@ -1,27 +1,23 @@
 <?php
 $A_view = $A_view ?? [];
-$error = $A_view['errors'];
+$errors = $A_view['errors'];
+$message = $A_view['message'];
 ?>
 
 <h1>Réinitialiser le mot de passe</h1>
 
 <?php
-if(!empty($error)){?>
-    echo '<p style="color: red;"><?=htmlspecialchars($error[0])?></p><?php
+if(!empty($errors)){?>
+    <p style="color: red;"><?=htmlspecialchars($errors[0])?></p><?php
+}
+if(!empty($message)){?>
+    <p style="color: red;"><?=htmlspecialchars($message)?></p><?php
 }
 ?>
 
 <span>
    <form action="/resetpassword" method="post">
      <ul>
-           <li>
-              <li>
-                <label id = "label" for = "email">E-mail</label>
-              </li>
-             <li>
-                 <input class="textInput" type="email" name="email" required>
-             </li>
-         </li>
          <li>
              <li>
                  <label id = "label" for = "password" >Mot de passe</label>

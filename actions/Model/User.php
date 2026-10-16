@@ -14,4 +14,8 @@ public function __construct(
     public function getId(): int {
     return $this->id;
     }
+
+    public function getEmail(): string {
+    return $this->email;
+    }
 }

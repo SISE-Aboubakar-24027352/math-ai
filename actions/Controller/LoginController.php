@@ -21,6 +21,8 @@ final class LoginController
                 $errors[] = 'L\'adresse email est invalide.';
             }
 
+            $errors = array_filter($errors);
+
             if (empty($errors)) {
                 $user = $this->repository->findByEmail($email);
 

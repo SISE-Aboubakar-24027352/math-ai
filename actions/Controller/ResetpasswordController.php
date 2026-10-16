@@ -1,56 +1,61 @@
 <?php
+namespace actions\Controller;
+use Core\View;
+use actions\Model\UserRepository;
+use actions\Model\UserValidate;
+
 final class ResetpasswordController
 {
     /**
      * @param array<string, mixed> $parameters
      * @param array<string, mixed> $postParams
      */
-    public function defaultAction(array $parameters, array $postParams):void
-    {
-        header('Location: /home');
-        exit;
-    }
+    public function __construct(private readonly UserRepository $repository) {}
 
     /**
      * @param array<string, mixed> $parameters
      * @param array<string, mixed> $postParams
      */
-    public function resetpasswordAction(array $parameters, array $postParams): void
+    public function resetpasswordAction(): void
     {
         $errors = [];
+        $message = '';
 
-        if (!empty($postParams)) {
-            $email = filter_var(trim($postParams['email'] ?? ''),FILTER_VALIDATE_EMAIL);
-            $password = $postParams['password'] ?? '';
-            $confirmation = $postParams['confirmation'] ?? '';
+        if (!empty($_POST)) {
+            $password = $_POST['password'] ?? '';
+            $confirmation = $_POST['confirmation'] ?? '';
+            $reset_token = $_POST['reset_token'] ?? '';
+            $userReset = new UserValidate('', $password, $confirmation);
 
-            $userValidate = new UserValidate($email,$password,$confirmation);
+            $errLength = $userReset->checkPasswordLength();
+            $errConf = $userReset->passwordConfirmation();
+            $errorPassUse = $this->repository -> verifyPasswordUsability($reset_token,$password);
+            $errorToken = $this->repository -> verifyToken($reset_token);
 
-            $passwordError = $userValidate->checkPasswordLength();
-            $confirmationError = $userValidate->passwordConfirmation();
-
-            if ($email === false) {
-                $errors[] = 'L\'adresse email est invalide.';
-            }
-
-            if (!empty($passwordError)) $errors[] = $passwordError;
-            if (!empty($confirmationError)) $errors[] = $confirmationError;
+            if (!empty($errLength)) $errors[] = $errLength;
+            if (!empty($errConf)) $errors[] = $errConf;
+            if (!empty($errorPassUse)) $errors[] = $errorPassUse;
+            if (!empty($errorToken)) $errors[] = $errorToken;
 
             if (empty($errors)) {
-                $repository = new UserRepository();
-                $user = $repository->updateUser($email,$password);
-
-                if ($user !== null && $user->verifyPassword($password)) {
+                $user = $repository->updateUser($reset_token,$password);
+                if ($user !== null) {
                     $_SESSION['id'] = $user->id;
                     $_SESSION['email'] = $user->email;
-                    header('Location: /home');
+                    header('{Location: /home');
+                    $message = 'Votre mot de passe a été modifié.';
                     exit;
-                } else {
-                    $errors[] = 'Email ou mot de passe incorrect.';
+                }
+                else {
+                    $errors[] = 'Une erreur est survenue.';
                 }
             }
         }
-        echo View::show('ResetPassword', array('errors' => $errors, 'formData' => $postParams));
+        echo View::show('Resetpassword', array('errors' => $errors,'message' => $message, 'formData' => $_POST));
+    }
+
+    public function resetpasswordForm(){
+        echo View::show('Resetpassword', array('errors' => [], 'formData' => []));
     }
 
 }

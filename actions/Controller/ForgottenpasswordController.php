@@ -15,12 +15,12 @@ final class ForgottenpasswordController
             if (!$this->repository->emailExists($email)) {
                 $message = 'Si votre adresse e-mail est correcte, un email de réinitialisation a été envoyé.';
             } else {
-                $token = bin2hex(random_bytes(32));
-                $expiry = (new DateTimeImmutable('+15 minutes'))->format('Y-m-d H:i:s');
-                $this->repository->setResetToken($email, $token, $expiry);
+                $reset_token = bin2hex(random_bytes(32));
+                $expiry = (new \DateTimeImmutable('+15 minutes'))->format('Y-m-d H:i:s');
+                $this->repository->setResetToken($email, $reset_token, $expiry);
                 $resetLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://')
                     . ($_SERVER['HTTP_HOST'] ?? 'localhost')
-                    . '/index.php?url=forgottenPassword/reset&token=' . urlencode($token);
+                    . '/resetpassword/reset&token=' . urlencode($reset_token);
                 $userMail = new UserMail($email);
                 $content = $userMail->createResetPasswordMessage($email, $resetLink);
                 if ($userMail->sendMail($content)) {

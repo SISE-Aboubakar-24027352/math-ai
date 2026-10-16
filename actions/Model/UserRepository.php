@@ -1,7 +1,9 @@
 <?php
 namespace actions\Model;
+use _PHPStan_cb3b7e994\Nette\Utils\DateTime;
 use Core\Db;
 final class UserRepository {
+    public \PDO $pdo;
     public function __construct($pdo = null) {
         $this->pdo = Db::getPdo();
     }
@@ -46,21 +48,22 @@ final class UserRepository {
         return $user;
     }
 
-    public function updateUser(string $email, string $password): User {
-        $user = $this->findByEmail($email);
+    public function updateUser(string $reset_token, string $password): User {
+        $user = $this->findByToken($reset_token);
         if ($user === null) {
-            throw new InvalidArgumentException('Aucun utilisateur trouvé pour cet email.');
+            throw new InvalidArgumentException('Aucun utilisateur trouvé pour ce token.');
         }
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $stmt = $this->pdo->prepare('UPDATE users SET password = :password, reset_token = NULL, reset_token_expiry = NULL WHERE email = :email');
-        $stmt->execute(['password' => $hashed_password,'email' => $email]);
+        $stmt = $this->pdo->prepare('UPDATE users SET password = :password, reset_token = NULL, reset_token_expiry = NULL WHERE reset_token = :reset_token');
+        $stmt->execute(['password' => $hashed_password,'reset_token' => $reset_token]);
         $id = $user->getId();
+        $email = $user->getEmail();
         return new User ($id, $email, $hashed_password);
     }
 
-    public function setResetToken(string $email,string $token,string $expiry): bool {
+    public function setResetToken(string $email,string $reset_token,string $expiry): bool {
         $stmt = $this->pdo->prepare('UPDATE users SET reset_token = :token, reset_token_expiry = :expiry WHERE email = :email');
-        return $stmt->execute(['token' => $token, 'expiry' => $expiry,'email' => $email]);
+        return $stmt->execute(['token' => $reset_token, 'expiry' => $expiry,'email' => $email]);
     }
 
     public function findByToken(string $reset_token): ?User {
@@ -69,5 +72,26 @@ final class UserRepository {
         $user = $stmt->fetch(\PDO::FETCH_ASSOC);
         if (!$user) return null;
         else return new User($user['id'], $user['email'], $user['password']);
+    }
+
+    public function verifyPasswordUsability(string $reset_token,string $password): ?string {
+        $stmt = $this->pdo->prepare('SELECT password FROM users WHERE reset_token = :reset_token');
+        $stmt->execute(['reset_token' => $reset_token]);
+        $user = $stmt->fetch(\PDO::FETCH_ASSOC);
+        if (password_verify($password, $user['password']))
+            return 'Veuillez entrer un mot de passe différent du précédent.';
+        else return null;
+    }
+
+    public function verifyToken(string $reset_token): ?string {
+        if ($reset_token == null) return 'Il n\'existe aucun token.';
+        $time_now = new \DateTimeImmutable();
+        $stmt = $this->pdo->prepare('SELECT reset_token_expiry FROM users WHERE reset_token = :reset_token');
+        $stmt->execute(['reset_token' => $reset_token]);
+        $expiry_date = $stmt->fetch(\PDO::FETCH_ASSOC)['reset_token_expiry'];
+        if ($time_now > $expiry_date) {
+            return 'Cette demande n\'est plus valide.';
+        }
+        else return null;
     }
 }
