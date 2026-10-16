@@ -2,8 +2,12 @@
 namespace actions\Controller;
 use Core\View;
 use actions\Model\UserRepository;
-final class ForgottenPasswordController
+final class ForgottenpasswordController
 {
+    /**
+     * @param array<string, mixed> $parameters
+     * @param array<string, mixed> $postParams
+     */
     public function __construct(private readonly UserRepository $repository) {}
     public function forgottenpasswordAction(): void
     {
@@ -37,5 +41,9 @@ final class ForgottenPasswordController
             'message' => '',
             'formData' => []
         ]);
+        /**
+         * @param array<string, mixed> $parameters
+         * @param array<string, mixed> $postParams
+         */
     }
 }

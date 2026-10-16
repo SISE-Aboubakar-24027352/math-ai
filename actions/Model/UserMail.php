@@ -7,7 +7,10 @@ use PHPMailer\PHPMailer\SMTP;
 final class UserMail {
     public function __construct(private string $email) {}
 
-    public function sendMail(array $content): bool
+    /**
+     * @param array<string, mixed> $content
+     */
+    public function sendMail(array $content): bool|string
     {
         $mail = new PHPMailer(true);
 
@@ -25,6 +28,7 @@ final class UserMail {
             $mail->addAddress($this->email);
 
             $mail->Subject = $content['subject'] ?? 'Message';
+            $mail->isHTML(true);
             $mail->Body = $content['message'] ?? '';
             $mail->AltBody = strip_tags($content['message'] ?? '');
 
@@ -34,13 +38,15 @@ final class UserMail {
         }
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function createResetPasswordMessage(string $email, string $resetLink): array
     {
-        $resetLink = '';
         $subject = 'Réinitialisation de votre mot de passe';
-        $message = "Bonjour,\n\n";
-        $message .= "Pour réinitialiser votre mot de passe, cliquez sur ce lien :\n";
-        $message .= $resetLink . "\n\n";
+        $message = "Bonjour,<br><br>";
+        $message .= "Pour réinitialiser votre mot de passe, cliquez sur ce lien :<br><br>";
+        $message .= '<a href="' . $resetLink . '">Réinitialiser mon mot de passe</a><br><br>';
         $message .= "Ce lien expirera dans 15 minutes.\n";
 
         return [

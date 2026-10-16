@@ -1,28 +1,35 @@
 <?php
 namespace app\View;
+$A_view = $A_view ?? [];
 $error = $A_view['errors'];
-echo '<h1>Connexion</h1>';
-if(!empty($error)){
-    echo '<p style="color: red;">'. htmlspecialchars($error[0]) .'</p>';
+?>
+
+<h1>Connexion</h1>';
+
+<?php
+if(!empty($error)){?>
+    echo '<p style="color: red;"><?=htmlspecialchars($error[0])?></p><?php
 }
-echo '<span>';
-echo    '<form action="/login" method="post">';
-echo        '<ul>';
-echo            '<li>';
-echo                '<p>';
-echo                    '<label for="email">E-mail</label>';
-echo                    '<input type="email" name="email" value="" required>';
-echo                '</p>';
-echo            '</li>';
-echo            '<li>';
-echo                '<p>';
-echo                    '<label for="password">Mot de passe</label>';
-echo                    '<input type="password" name="password" required>';
-echo                '</p>';
-echo            '</li>';
-echo            '<button type="submit">Se connecter</button>';
-echo        '</ul>';
-echo    '</form>';
-echo    '<p>vous n\'avez pas de compte ? Inscrivez-vous <a href="/register">ici</a>.</p>';
-echo    '<p><a href="/forgottenpassword">mot de passe oublié</a> ?';
-echo '</span>';
+?>
+
+<span>
+    <form action="/login" method="post">
+    <ul>
+        <li>
+            <p>
+                <label for="email">E-mail</label>
+                <input type="email" name="email" value="" required>
+            </p>
+        </li>
+        <li>
+            <p>
+                <label for="password">Mot de passe</label>
+                <input type="password" name="password" required>
+            </p>
+            </li>
+            <button type="submit">Se connecter</button>
+        </ul>
+    </form>
+    <p>vous n'avez pas de compte ? Inscrivez-vous <a href="/register">ici</a>.</p>
+    <p><a href="/forgottenpassword">mot de passe oublié</a> ?
+</span>

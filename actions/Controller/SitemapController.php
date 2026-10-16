@@ -5,6 +5,6 @@ final class SitemapController
 {
     public function sitemapForm()
     {
-        echo View::show('SiteMap');
+        echo View::show('Sitemap');
     }
 }

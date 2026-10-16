@@ -4,6 +4,10 @@ use Core\View;
 use actions\Model\UserRepository;
 final class LoginController
 {
+    /**
+     * @param array<string, mixed> $parameters
+     * @param array<string, mixed> $postParams
+     */
     public function __construct(private readonly UserRepository $repository) {}
     public function loginAction()
     {
@@ -23,7 +27,7 @@ final class LoginController
                 if ($user !== null && $user->verifyPassword($password)) {
                     $_SESSION['id'] = $user->id;
                     $_SESSION['email'] = $user->email;
-                    header('Location: /index.php?url=home/home');
+                    header('Location: /home');
                     exit;
                 } else {
                     $errors[] = 'Email ou mot de passe incorrect.';
@@ -39,7 +43,7 @@ final class LoginController
     public function logoutAction(array $parameters, array $postParams)
     {
         session_destroy();
-        header('Location: /index.php?url=home/home');
+        header('Location: /home');
         exit;
     }
 }

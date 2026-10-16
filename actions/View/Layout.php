@@ -1,3 +1,6 @@
+<?php
+$A_view = $A_view ?? [];
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
