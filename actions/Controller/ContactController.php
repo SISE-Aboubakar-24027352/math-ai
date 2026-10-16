@@ -3,10 +3,8 @@
 namespace actions\Controller;
 use Core\View;
 final class ContactController{
-    /**
-     * @param array<string, mixed> $parameter
-     */
-    public function contactForm(){
+
+    public function contactForm():void{
         echo View::show('Contact');
     }
 }
