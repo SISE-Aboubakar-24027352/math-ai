@@ -12,7 +12,7 @@ for ($i = 1; $i <= 12; $i++) {?>
     <div class="infoCard">
     <h2>Title<?=$i?></h2>
     <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, voluptates explicabo. Tenetur quas repellendus quisquam, earum quae temporibus doloribus eveniet iste fuga iure quam voluptatem facere, itaque expedita dolore cum
+    Paragraphe
     </p>
     </div>
     </a>

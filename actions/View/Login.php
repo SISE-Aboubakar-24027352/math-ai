@@ -4,11 +4,11 @@ $A_view = $A_view ?? [];
 $error = $A_view['errors'];
 ?>
 
-<h1>Connexion</h1>';
+<h1>Connexion</h1>
 
 <?php
 if(!empty($error)){?>
-    echo '<p style="color: red;"><?=htmlspecialchars($error[0])?></p><?php
+    echo '<p style="color: red"><?=htmlspecialchars($error[0])?></p><?php
 }
 ?>
 
