@@ -10,11 +10,17 @@ permissions:
 
 jobs:
   composer:
-    name: Install Composer Dependency
+    name: Update Composer Dependencies
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ramsey/composer-install@v3
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: none
+          tools: composer:v2
+      - name: composer update
+        run: composer update --no-interaction --prefer-dist --no-progress
 
   lint:
     name: PHP lint (PHP ${{ matrix.php-version }})
@@ -73,3 +79,4 @@ jobs:
             git fetch origin main
             git pull origin main
             git reset --hard origin/main
+            composer update --no-dev --optimize-autoloader --no-interaction

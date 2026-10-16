@@ -5,4 +5,4 @@ parameters:
         - Core
         - public
     excludePaths:
-        - vendor
+        - vendor (?)
