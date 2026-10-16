@@ -1,4 +1,5 @@
 <?php
+namespace actions\Model;
 final class UserValidate {
 
     public function __construct(public readonly string $email, public readonly string $password, public readonly string $confirmation) {}
@@ -15,9 +16,9 @@ final class UserValidate {
     public function checkPasswordLength(): string {
         $errors = '';
 
-        if (strlen($this->password) < 8) {
+        if (strlen($this->password) < 12) {
 
-            $errors = 'Le mot de passe doit contenir au moins 8 caractères.';
+            $errors = 'Le mot de passe doit contenir au moins 12 caractères.';
 
         }
         return $errors;

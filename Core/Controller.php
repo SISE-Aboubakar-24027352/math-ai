@@ -1,5 +1,9 @@
 <?php
 
+//Ce code est inutile dans la nouvelle version de notre MVC.
+
+namespace Core;
+use Core\exceptions\ControllerException;
 final class Controller
 {
     /** @var array<string, mixed> */

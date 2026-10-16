@@ -1,5 +1,6 @@
-<?php 
-require_once __DIR__ . '/Constants.php';
+<?php
+
+namespace Core;
 final class View
 {
     public static function openBuffer(): void
@@ -16,14 +17,19 @@ final class View
     /**
      * @param array<string, mixed> $A_array
      */
-    public static function show(string $S_location,array $A_array = []):string|false
+
+    public static function closeBuffer(): bool {
+        return ob_clean();
+    }
+
+    public static function show(string $S_location,array $A_array = []):void
     {
-        $S_file = Constants::viewRepository() . $S_location . '.php';
-        
+        $data = [];
+        $S_file = __DIR__ . '/../actions/View/' . $S_location . '.php';
+        $data += ['LoginUser' => $_SESSION['user'] ?? null];
         $A_view = $A_array;
-        ob_start();
-        include $S_file;
-        return ob_get_clean();
+        extract($A_view, EXTR_SKIP);
+        require $S_file;
     }
 }
 ?>

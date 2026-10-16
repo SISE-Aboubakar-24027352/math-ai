@@ -1,5 +1,5 @@
 <?php
-
+namespace actions\Model;
 final class User {
 public function __construct(
     public readonly int $id,
@@ -13,5 +13,9 @@ public function __construct(
 
     public function getId(): int {
     return $this->id;
+    }
+
+    public function getEmail(): string {
+    return $this->email;
     }
 }

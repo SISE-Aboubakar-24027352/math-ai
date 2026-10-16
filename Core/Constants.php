@@ -1,5 +1,6 @@
 <?php
 
+namespace Core;
 final class Constants
 {
 

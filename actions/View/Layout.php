@@ -16,10 +16,10 @@ $A_view = $A_view ?? [];
         <a href="/">MathsAI</a>
         <?php $user = $_SESSION['email'] ?? null ?>
         <?php if ($user === null) { ?>
-            <a href="/index.php?url=login/login">Connexion</a>
-            <a href="/index.php?url=register/register">Inscription</a>
+            <a href="/login">Connexion</a>
+            <a href="/register">Inscription</a>
         <?php } else { ?>
-            <a href="index.php?url=login/logout">Déconnexion</a>
+            <a href="/logout">Déconnexion</a>
         <?php } ?>
     </nav>
 </header>
@@ -31,9 +31,9 @@ $A_view = $A_view ?? [];
 <footer class="footer">
     <ul>
         <li> <a href="/">Accueil</a></li>
-        <li> <a href="/index.php?url=sitemap"> Plan du site</a></li>
-        <li> <a href="/index.php?url=contact"> Nous contacter</a> </li>
-        <li> <a href="/index.php?url=mentions"> Mentions légales </a></li>
+        <li> <a href="/sitemap"> Plan du site</a></li>
+        <li> <a href="/contact"> Nous contacter</a> </li>
+        <li> <a href="/mentions"> Mentions légales </a></li>
     </ul>
 </footer>
 </body>

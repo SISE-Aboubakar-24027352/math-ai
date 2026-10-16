@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/Constants.php';
+namespace Core;
 
 /**
  * Charge les variables d'environnement depuis le fichier .env.

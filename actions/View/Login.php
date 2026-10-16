@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "/../../Core/Constants.php";
+namespace app\View;
 $A_view = $A_view ?? [];
 $error = $A_view['errors'];
 ?>
@@ -7,13 +7,13 @@ $error = $A_view['errors'];
 <h1>Connexion</h1>';
 
 <?php
-if(!empty($error)){
-    echo '<p style="color: red;">'. htmlspecialchars($error[0]) .'</p>';
+if(!empty($error)){?>
+    echo '<p style="color: red;"><?=htmlspecialchars($error[0])?></p><?php
 }
 ?>
 
 <span>
-    <form action="/index.php?url=login/login" method="post">
+    <form action="/login" method="post">
     <ul>
         <li>
             <p>
@@ -30,6 +30,6 @@ if(!empty($error)){
             <button type="submit">Se connecter</button>
         </ul>
     </form>
-    <p>vous n'avez pas de compte ? Inscrivez-vous <a href="/index.php?url=register/register">ici</a>.</p>
-    <p><a href="/index.php?url=forgottenpassword/forgottenpassword">mot de passe oublié</a> ?
+    <p>vous n'avez pas de compte ? Inscrivez-vous <a href="/register">ici</a>.</p>
+    <p><a href="/forgottenpassword">mot de passe oublié</a> ?
 </span>

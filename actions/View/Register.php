@@ -1,19 +1,19 @@
 <?php
-require_once __DIR__ . "/../../Core/Constants.php";
+namespace app\View;
 $A_view = $A_view ?? [];
 $error = $A_view['errors'];
 ?>
 
-<h1>Réinitialiser le mot de passe</h1>
+<h1>Inscription</h1>
 
 <?php
-if(!empty($error)){
-    echo '<p style="color: red;">'. htmlspecialchars($error[0]) .'</p>';
+if(!empty($error)){?>
+    <p style="color: red;"><?=htmlspecialchars($error[0])?></p><?php
 }
 ?>
 
 <span>
-   <form action="/index.php?url=resetpassword/resetpassword" method="post">
+   <form action="/register" method="post">
      <ul>
            <li>
               <li>
@@ -30,16 +30,17 @@ if(!empty($error)){
              <li>
                 <input class="textInput" type="password" name="password" value="" required>
             </li>
-         </li>
-         <li>
+        </li>
+        <li>
             <li>
                 <label id = "label" for = "confirmation">Confirmation du mot de passe</label>
             </li>
             <li>
                 <input class="textInput" type="password" name="confirmation" value="" required>
             </li>
-         </li>
-         <button type="submit">Valider</button>
+        </li>
+        <button type="submit">S'inscrire</button>
        </ul>
    </form>
+   <p>vous avez déjà un compte ? Connectez vous <a href="/login">ici</a></p>
 </span>
