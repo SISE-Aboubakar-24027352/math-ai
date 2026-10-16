@@ -4,10 +4,7 @@ use Core\View;
 use actions\Model\UserRepository;
 final class ForgottenpasswordController
 {
-    /**
-     * @param array<string, mixed> $parameters
-     * @param array<string, mixed> $postParams
-     */
+
     public function __construct(private readonly UserRepository $repository) {}
     public function forgottenpasswordAction(): void
     {
@@ -36,14 +33,10 @@ final class ForgottenpasswordController
             'formData' => $_POST
         ]);
     }
-    public function forgottenpasswordForm() {
+    public function forgottenpasswordForm():void {
         echo View::show('Forgottenpassword', [
             'message' => '',
             'formData' => []
         ]);
-        /**
-         * @param array<string, mixed> $parameters
-         * @param array<string, mixed> $postParams
-         */
     }
 }
