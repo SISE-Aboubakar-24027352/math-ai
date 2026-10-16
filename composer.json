@@ -2,7 +2,7 @@
     "name": "math-ai/mathai",
     "type": "project",
     "require": {
-        "php": ">=8.4",
+        "php": ">=8.3",
         "ext-pdo": "*",
         "phpmailer/phpmailer": "^7.1"
     },
