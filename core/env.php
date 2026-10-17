@@ -1,6 +1,6 @@
 <?php
 
-namespace core;
+namespace Core;
 
 /**
  * Charge les variables d'environnement depuis le fichier .env.
