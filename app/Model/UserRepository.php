@@ -1,7 +1,7 @@
 <?php
 namespace App\Model;
 use Nette\Utils\DateTime;
-use core\Db;
+use Core\Db;
 final class UserRepository {
     public \PDO $pdo;
     public function __construct(?\PDO $pdo = null) {
