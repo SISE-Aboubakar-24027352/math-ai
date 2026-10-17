@@ -35,12 +35,12 @@ final class RegisterController {
                     $success = true;
                     $_SESSION['id'] = $user->id;
                     $_SESSION['email'] = $user->email;
-                    header('Location: index.php?action=login');
+                    header('Location: /');
                     exit;
                 }
             }
         }
-        echo View::show('Register', array( 'errors' => $errors,'success' => $success, 'formData' => $postParams));
+        echo View::show('Register', array( 'errors' => $errors,'success' => $success, 'formData' => $_POST));
     }
     public function registerForm(): void {
         echo View::show('Register', array( 'errors' => [],'success' => null, 'formData' => []));

@@ -23,9 +23,8 @@ final class LoginController
                 $user = $this->repository->findByEmail($email);
 
                 if ($user !== null && $user->verifyPassword($password)) {
-                    $_SESSION['id'] = $user->id;
                     $_SESSION['email'] = $user->email;
-                    header('Location: /home');
+                    header('Location: /');
                     exit;
                 } else {
                     $errors[] = 'Email ou mot de passe incorrect.';
@@ -38,10 +37,10 @@ final class LoginController
     public function loginForm(): void {
         echo View::show('Login', array('errors' => [], 'formData' => []));
     }
-    public function logoutAction(array $parameters, array $postParams): void
+    public function logoutAction(): void
     {
         session_destroy();
-        header('Location: /home');
+        header('Location: /');
         exit;
     }
 }

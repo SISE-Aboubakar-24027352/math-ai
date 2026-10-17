@@ -8,7 +8,7 @@ $error = $A_view['errors'];
 
 <?php
 if(!empty($error)){?>
-    echo '<p style="color: red"><?=htmlspecialchars($error[0])?></p><?php
+    <p style="color: red"><?=htmlspecialchars($error[0])?></p><?php
 }
 ?>
 
