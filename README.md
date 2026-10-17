@@ -2,8 +2,10 @@
 
 Projet de développement web réalisé dans le cadre du module R3.01. L’application utilise une architecture MVC en PHP.
 
-- **Maquette Figma** :
-- **Equipe** :
+- **Maquette Figma** : [https://www.figma.com/design/RkEKAqYKMDIyW4lrNG88gB/Projet-Web?node-id=0-1&t=3iKZ6zowKWYxOzEI-1](https://www.figma.com/design/RkEKAqYKMDIyW4lrNG88gB/Projet-Web?node-id=0-1&t=3iKZ6zowKWYxOzEI-1)
+
+  
+- **Equipe** : OLS Lucas, SEILLER William, SISE Aboubakar, ZOPPI Nicolas
 
 ## Prérequis
 
@@ -84,3 +86,4 @@ composer phpstan
 - [Création du mot de passe oublié](https://blog.crea-troyes.fr/5426/jour-17-systeme-pour-reinitialiser-un-mot-de-passe-oublie/)
 - [Ancien Framework MVC](https://github.com/moinal/LP2020).
 - [Répo MVC-Explication](https://github.com/hadeli/MVC-Explication)
+- [Documentation PHP](https://www.php.net/docs.php)
