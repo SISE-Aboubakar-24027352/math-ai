@@ -1,19 +1,20 @@
 <?php
 
 $root = __DIR__;
-require_once $root . '/../Core/AutoLoader.php';
+require_once $root . '/../core/AutoLoader.php';
 use Core\View;
 use Core\Controller;
 use Core\Db;
-use actions\Controller\{HomeController,
-LoginController,
-RegisterController,
-ForgottenpasswordController,
+use App\Controller\{HomeController,
+    LoginController,
+    RegisterController,
+    ForgottenpasswordController,
     ResetpasswordController,
-ContactController,
-MentionsController,
-SitemapController};
-use actions\Model\UserRepository;
+    ContactController,
+    MentionsController,
+    SitemapController};
+use App\Model\UserRepository;
+
 
 $repository = new UserRepository();
 $controllers = [
@@ -30,7 +31,7 @@ $controllers = [
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?: '/';   // "/login?x=1" -> "/login"
 $path = rtrim($path, '/') ?: '/';
 
-$routes = require $root . '/../Core/config/routes.php';
+$routes = require $root . '/../core/config/routes.php';
 $method = $_SERVER['REQUEST_METHOD'];
 View::openBuffer();
 foreach ($routes as [$routeMethod, $routePath, [$class, $action]]) {

@@ -1,7 +1,7 @@
 <?php
-namespace actions\Controller;
+namespace App\Controller;
 use Core\View;
-use actions\Model\UserRepository;
+use App\Model\UserRepository;
 final class ForgottenpasswordController
 {
 

@@ -1,5 +1,5 @@
 <?php
-namespace app\View;
+
 $A_view = $A_view ?? [];
 $error = $A_view['errors'];
 ?>

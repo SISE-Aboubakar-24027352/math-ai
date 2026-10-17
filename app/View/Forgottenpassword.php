@@ -1,5 +1,4 @@
 <?php
-namespace app\View;
 $message = $A_view['message']; ?>
     <h1>Mot de passe oublié</h1> <?php
 if(!empty($message)){

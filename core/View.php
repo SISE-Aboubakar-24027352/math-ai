@@ -14,18 +14,14 @@ final class View
         // ob_get_clean() equivalent a ob_get_contents() + ob_end_clean()
     }
 
-    /**
-     * @param array<string, mixed> $A_array
-     */
-
     public static function closeBuffer(): bool {
         return ob_clean();
     }
 
-    public static function show(string $S_location,array $A_array = []):void
+    public static function show(string $S_location,$A_array = []):void
     {
         $data = [];
-        $S_file = __DIR__ . '/../actions/View/' . $S_location . '.php';
+        $S_file = __DIR__ . '/../app/View/' . $S_location . '.php';
         $data += ['LoginUser' => $_SESSION['user'] ?? null];
         $A_view = $A_array;
         extract($A_view, EXTR_SKIP);

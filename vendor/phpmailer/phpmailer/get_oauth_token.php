@@ -24,10 +24,10 @@
  * as [https/http]://<yourdomain>/<folder>/get_oauth_token.php
  * e.g.: http://localhost/phpmailer/get_oauth_token.php
  * * Ensure dependencies are installed with 'composer install'
- * * Set up an actions in your Google/Yahoo/Microsoft account
- * * Set the script address as the actions's redirect URL
+ * * Set up an app in your Google/Yahoo/Microsoft account
+ * * Set the script address as the app's redirect URL
  * If no refresh token is obtained when running this file,
- * revoke access to your actions and run the script again.
+ * revoke access to your app and run the script again.
  */
 
 namespace PHPMailer\PHPMailer;
