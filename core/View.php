@@ -1,6 +1,6 @@
 <?php
 
-namespace core;
+namespace Core;
 final class View
 {
     public static function openBuffer(): void
