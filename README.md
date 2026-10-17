@@ -7,6 +7,8 @@ Projet de développement web réalisé dans le cadre du module R3.01. L’applic
   
 - **Equipe** : OLS Lucas, SEILLER William, SISE Aboubakar, ZOPPI Nicolas
 
+- [Le site](https://webserver-s301.alwaysdata.net/)
+
 ## Prérequis
 
 - PHP 8.4 ou supérieur, avec l’extension PDO
