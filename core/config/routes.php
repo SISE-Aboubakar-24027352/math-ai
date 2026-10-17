@@ -11,10 +11,12 @@ use App\Controller\{HomeController,
 
 return [
     ['GET', '/', [HomeController::class, 'homeForm']],
+    ['GET', '/home', [HomeController::class, 'homeForm']],
     ['GET', '/login', [LoginController::class, 'loginForm']],
     ['POST', '/login', [LoginController::class, 'loginAction']],
     ['GET', '/register', [RegisterController::class, 'registerForm']],
     ['POST', '/register', [RegisterController::class, 'registerAction']],
+    ['GET', '/logout', [LoginController::class, 'logoutAction']],
     ['GET', '/forgottenpassword', [ForgottenpasswordController::class, 'forgottenpasswordForm']],
     ['POST', '/forgottenpassword', [ForgottenpasswordController::class, 'forgottenpasswordAction']],
     ['GET', '/resetpassword', [ResetpasswordController::class, 'resetpasswordForm']],

@@ -1,6 +1,7 @@
 <?php
 
 $root = __DIR__;
+require_once $root . '/../vendor/autoload.php'; //AutoLoader de composer
 require_once $root . '/../core/AutoLoader.php';
 use Core\View;
 use Core\Controller;
@@ -15,7 +16,7 @@ use App\Controller\{HomeController,
     SitemapController};
 use App\Model\UserRepository;
 
-
+session_start();
 $repository = new UserRepository();
 $controllers = [
     HomeController::class     => fn() => new HomeController(),

@@ -2,6 +2,7 @@
 namespace App\Controller;
 use Core\View;
 use App\Model\UserRepository;
+use App\Model\UserMail;
 final class ForgottenpasswordController
 {
 
