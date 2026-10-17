@@ -1,21 +1,13 @@
 <?php
-namespace actions\Controller;
+namespace App\Controller;
 use Core\View;
-use actions\Model\UserRepository;
-use actions\Model\UserValidate;
+use App\Model\UserRepository;
+use App\Model\UserValidate;
 
 final class ResetpasswordController
 {
-    /**
-     * @param array<string, mixed> $parameters
-     * @param array<string, mixed> $postParams
-     */
     public function __construct(private readonly UserRepository $repository) {}
 
-    /**
-     * @param array<string, mixed> $parameters
-     * @param array<string, mixed> $postParams
-     */
     public function resetpasswordAction(): void
     {
         $errors = [];
@@ -54,7 +46,7 @@ final class ResetpasswordController
         echo View::show('Resetpassword', array('errors' => $errors,'message' => $message, 'formData' => $_POST));
     }
 
-    public function resetpasswordForm(){
+    public function resetpasswordForm(): void{
         echo View::show('Resetpassword', array('errors' => [], 'formData' => []));
     }
 

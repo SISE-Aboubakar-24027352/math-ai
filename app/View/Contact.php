@@ -1,5 +1,4 @@
 <?php
-namespace app\View;
 ?>
 <section class="contact">
     <h1>Nous contacter !</h1>

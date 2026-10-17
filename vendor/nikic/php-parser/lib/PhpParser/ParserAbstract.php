@@ -83,7 +83,7 @@ abstract class ParserAbstract implements Parser {
      *             state/symbol pair is $action[$actionBase[$state] + $symbol]. If $actionBase[$state] is 0, the
      *             action is defaulted, i.e. $actionDefault[$state] should be used instead. */
     protected array $actionBase;
-    /** @var int[] Table of actions. Indexed according to $actionBase comment. */
+    /** @var int[] Table of app. Indexed according to $actionBase comment. */
     protected array $action;
     /** @var int[] Table indexed analogously to $action. If $actionCheck[$actionBase[$state] + $symbol] != $symbol
      *             then the action is defaulted, i.e. $actionDefault[$state] should be used instead. */
@@ -556,7 +556,7 @@ abstract class ParserAbstract implements Parser {
     */
 
     /*
-     * Helper functions invoked by semantic actions
+     * Helper functions invoked by semantic app
      */
 
     /**

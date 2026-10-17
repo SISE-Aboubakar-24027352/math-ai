@@ -22,6 +22,10 @@ class ComposerStaticInitd470c1ca77d71cc3cb75fbe724632eb3
         array (
             'DeepCopy\\' => 9,
         ),
+        'C' =>
+        array (
+            'Core\\' => 5,
+        ),
         'A' =>
         array (
             'App\\' => 4,
@@ -41,6 +45,10 @@ class ComposerStaticInitd470c1ca77d71cc3cb75fbe724632eb3
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
+        'Core\\' =>
+        array (
+            0 => __DIR__ . '/../..' . '/core',
+        ),
         'App\\' =>
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -48,7 +56,25 @@ class ComposerStaticInitd470c1ca77d71cc3cb75fbe724632eb3
     );
 
     public static $classMap = array (
+        'App\\Controller\\ContactController' => __DIR__ . '/../..' . '/app/Controller/ContactController.php',
+        'App\\Controller\\ForgottenpasswordController' => __DIR__ . '/../..' . '/app/Controller/ForgottenpasswordController.php',
+        'App\\Controller\\HomeController' => __DIR__ . '/../..' . '/app/Controller/HomeController.php',
+        'App\\Controller\\LoginController' => __DIR__ . '/../..' . '/app/Controller/LoginController.php',
+        'App\\Controller\\MentionsController' => __DIR__ . '/../..' . '/app/Controller/MentionsController.php',
+        'App\\Controller\\RegisterController' => __DIR__ . '/../..' . '/app/Controller/RegisterController.php',
+        'App\\Controller\\ResetpasswordController' => __DIR__ . '/../..' . '/app/Controller/ResetpasswordController.php',
+        'App\\Controller\\SitemapController' => __DIR__ . '/../..' . '/app/Controller/SitemapController.php',
+        'App\\Model\\User' => __DIR__ . '/../..' . '/app/Model/User.php',
+        'App\\Model\\UserMail' => __DIR__ . '/../..' . '/app/Model/UserMail.php',
+        'App\\Model\\UserRepository' => __DIR__ . '/../..' . '/app/Model/UserRepository.php',
+        'App\\Model\\UserValidate' => __DIR__ . '/../..' . '/app/Model/UserValidate.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Core\\AutoLoader' => __DIR__ . '/../..' . '/core/AutoLoader.php',
+        'Core\\Constants' => __DIR__ . '/../..' . '/core/Constants.php',
+        'Core\\Controller' => __DIR__ . '/../..' . '/core/Controller.php',
+        'Core\\Db' => __DIR__ . '/../..' . '/core/Db.php',
+        'Core\\View' => __DIR__ . '/../..' . '/core/View.php',
+        'Core\\exceptions\\ControllerException' => __DIR__ . '/../..' . '/core/exceptions/ControllerException.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
         'DeepCopy\\Exception\\PropertyException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/PropertyException.php',

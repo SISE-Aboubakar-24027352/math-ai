@@ -1,5 +1,5 @@
 <?php
-namespace actions\Model;
+namespace App\Model;
 use _PHPStan_cb3b7e994\Nette\Utils\DateTime;
 use Core\Db;
 final class UserRepository {
@@ -51,7 +51,7 @@ final class UserRepository {
     public function updateUser(string $reset_token, string $password): User {
         $user = $this->findByToken($reset_token);
         if ($user === null) {
-            throw new InvalidArgumentException('Aucun utilisateur trouvé pour ce token.');
+            throw new \InvalidArgumentException('Aucun utilisateur trouvé pour ce token.');
         }
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $this->pdo->prepare('UPDATE users SET password = :password, reset_token = NULL, reset_token_expiry = NULL WHERE reset_token = :reset_token');

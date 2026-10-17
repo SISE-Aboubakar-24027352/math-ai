@@ -1,15 +1,11 @@
 <?php
-namespace actions\Controller;
+namespace App\Controller;
 use Core\View;
-use actions\Model\UserRepository;
+use App\Model\UserRepository;
 final class LoginController
 {
-    /**
-     * @param array<string, mixed> $parameters
-     * @param array<string, mixed> $postParams
-     */
     public function __construct(private readonly UserRepository $repository) {}
-    public function loginAction()
+    public function loginAction(): void
     {
         $errors = [];
 
@@ -39,10 +35,10 @@ final class LoginController
         echo View::show('Login', array('errors' => $errors, 'formData' => $_POST));
     }
 
-    public function loginForm() {
+    public function loginForm(): void {
         echo View::show('Login', array('errors' => [], 'formData' => []));
     }
-    public function logoutAction(array $parameters, array $postParams)
+    public function logoutAction(array $parameters, array $postParams): void
     {
         session_destroy();
         header('Location: /home');

@@ -1,11 +1,11 @@
 <?php
-namespace actions\Controller;
+namespace App\Controller;
 use Core\View;
-use actions\Model\UserRepository;
-use actions\Model\UserValidate;
+use App\Model\UserRepository;
+use App\Model\UserValidate;
 final class RegisterController {
     public function __construct(private readonly UserRepository $repository) {}
-    public function registerAction()
+    public function registerAction(): void
     {
         $errors = [];
         $success = false;
@@ -42,7 +42,7 @@ final class RegisterController {
         }
         echo View::show('Register', array( 'errors' => $errors,'success' => $success, 'formData' => $postParams));
     }
-    public function registerForm() {
+    public function registerForm(): void {
         echo View::show('Register', array( 'errors' => [],'success' => null, 'formData' => []));
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-use actions\Controller\{HomeController,
+use App\Controller\{HomeController,
     LoginController,
     RegisterController,
     ForgottenpasswordController,

@@ -1,5 +1,5 @@
 <?php
-namespace app\View;
+
 ?>
 <section class="mentions-legales">
     <h1>Mentions Légales</h1>
