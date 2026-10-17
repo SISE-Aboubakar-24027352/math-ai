@@ -1,6 +1,6 @@
 <?php
 
-namespace Core;
+namespace core;
 final class View
 {
     public static function openBuffer(): void
@@ -18,7 +18,10 @@ final class View
         return ob_clean();
     }
 
-    public static function show(string $S_location,$A_array = []):void
+    /**
+     * @param array<string, mixed> $A_array
+     */
+    public static function show(string $S_location,array $A_array = []):void
     {
         $data = [];
         $S_file = __DIR__ . '/../app/View/' . $S_location . '.php';

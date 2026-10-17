@@ -1,4 +1,5 @@
 <?php
+$A_view = $A_view ?? [];
 $message = $A_view['message']; ?>
     <h1>Mot de passe oublié</h1> <?php
 if(!empty($message)){

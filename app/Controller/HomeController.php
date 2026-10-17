@@ -1,6 +1,6 @@
 <?php
 namespace App\Controller;
-use Core\View;
+use core\View;
 final class HomeController{
     public function homeForm(): void
     {

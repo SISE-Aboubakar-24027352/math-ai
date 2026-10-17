@@ -1,6 +1,6 @@
 <?php
 namespace App\Controller;
-use Core\View;
+use core\View;
 final class MentionsController
 {
     public function mentionsForm(): void

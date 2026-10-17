@@ -1,6 +1,6 @@
 <?php
 namespace App\Controller;
-use Core\View;
+use core\View;
 use App\Model\UserRepository;
 use App\Model\UserValidate;
 final class RegisterController {

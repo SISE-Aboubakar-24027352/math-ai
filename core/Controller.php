@@ -2,8 +2,8 @@
 
 //Ce code est inutile dans la nouvelle version de notre MVC.
 
-namespace Core;
-use Core\exceptions\ControllerException;
+namespace core;
+use core\exceptions\ControllerException;
 final class Controller
 {
     /** @var array<string, mixed> */

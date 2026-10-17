@@ -3,9 +3,9 @@
 $root = __DIR__;
 require_once $root . '/../vendor/autoload.php'; //AutoLoader de composer
 require_once $root . '/../core/AutoLoader.php';
-use Core\View;
-use Core\Controller;
-use Core\Db;
+use core\View;
+use core\Controller;
+use core\Db;
 use App\Controller\{HomeController,
     LoginController,
     RegisterController,

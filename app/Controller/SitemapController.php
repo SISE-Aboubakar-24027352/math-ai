@@ -1,6 +1,6 @@
 <?php
 namespace App\Controller;
-use Core\View;
+use core\View;
 final class SitemapController
 {
     public function sitemapForm(): void

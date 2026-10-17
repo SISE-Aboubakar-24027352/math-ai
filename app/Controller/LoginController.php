@@ -1,6 +1,6 @@
 <?php
 namespace App\Controller;
-use Core\View;
+use core\View;
 use App\Model\UserRepository;
 final class LoginController
 {
@@ -16,8 +16,6 @@ final class LoginController
             if ($email === false) {
                 $errors[] = 'L\'adresse email est invalide.';
             }
-
-            $errors = array_filter($errors);
 
             if (empty($errors)) {
                 $user = $this->repository->findByEmail($email);
