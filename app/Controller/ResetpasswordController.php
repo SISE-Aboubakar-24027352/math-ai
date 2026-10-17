@@ -30,8 +30,8 @@ final class ResetpasswordController
             if (!empty($errorToken)) $errors[] = $errorToken;
 
             if (empty($errors)) {
-                $user = $repository->updateUser($reset_token,$password);
-                if ($user !== null) {
+                $user = $this->repository->updateUser($reset_token,$password);
+                if (!empty($user)) {
                     $_SESSION['id'] = $user->id;
                     $_SESSION['email'] = $user->email;
                     header('{Location: /home');

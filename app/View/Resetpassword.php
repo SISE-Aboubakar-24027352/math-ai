@@ -1,5 +1,6 @@
 <?php
 $A_view = $A_view ?? [];
+$message = [];
 $errors = $A_view['errors'];
 $message = $A_view['message'];
 ?>
